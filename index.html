@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=375, initial-scale=1.0">
+<title>Just · Flujo de Baja</title>
+<style>
+  /* ── Reset & base ─────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --neutrals-900: #171A22;
+    --neutrals-800: #2F3238;
+    --neutrals-700: #4A4D56;
+    --neutrals-500: #908F9A;
+    --neutrals-200: #C8C8CE;
+    --neutrals-100: #F0F0F0;
+    --neutrals-50:  #FFFFFF;
+    --action-600:   #1B87E5;
+    --action-500:   #5AAFF1;
+    --action-400:   #339FF2;
+    --action-100:   #C9E3FA;
+    --action-50:    #ECF5FE;
+    --brand-blue-500: #99ADE5;
+    --success-500:  #16BE7D;
+    --error-500:    #E5334A;
+    --shadow-header: 0px 1px 17px 0px rgba(23,26,34,0.06);
+    --font: 'Museo Sans', 'Trebuchet MS', system-ui, sans-serif;
+    --screen-w: 375px;
+  }
+
+  html, body {
+    width: var(--screen-w);
+    min-height: 100vh;
+    margin: 0 auto;
+    font-family: var(--font);
+    background: #F5F7FA;
+    overflow-x: hidden;
+  }
+
+  .screen {
+    display: none;
+    flex-direction: column;
+    width: var(--screen-w);
+    min-height: 100vh;
+    background: var(--neutrals-50);
+    position: relative;
+  }
+  .screen.active { display: flex; }
+
+  /* ── Header ───────────────────────────────────────────────────────── */
+  .header {
+    background: var(--neutrals-50);
+    box-shadow: var(--shadow-header);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-shrink: 0;
+  }
+  .header-icon {
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--neutrals-800);
+    background: none; border: none;
+    font-size: 20px;
+  }
+  .header-title {
+    font-size: 16px; font-weight: 700;
+    color: var(--neutrals-900); line-height: 24px;
+  }
+
+  /* ── Progress bar ─────────────────────────────────────────────────── */
+  .progress-wrap {
+    background: var(--neutrals-50);
+    padding: 10px 20px 18px;
+    box-shadow: var(--shadow-header);
+    flex-shrink: 0;
+  }
+  .progress-track {
+    width: 100%; height: 8px;
+    background: var(--neutrals-100);
+    border-radius: 100px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--brand-blue-500);
+    border-radius: 100px;
+    transition: width 0.4s ease;
+  }
+
+  /* ── Body ─────────────────────────────────────────────────────────── */
+  .body {
+    flex: 1;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+  }
+
+  /* ── Typography ───────────────────────────────────────────────────── */
+  .section-title { font-size: 20px; font-weight: 700; color: var(--neutrals-900); line-height: 26px; }
+  .section-subtitle { font-size: 14px; font-weight: 500; color: var(--neutrals-500); line-height: 20px; margin-top: 4px; }
+
+  /* ── Option Item ──────────────────────────────────────────────────── */
+  .options-list { display: flex; flex-direction: column; gap: 8px; }
+  .option-item {
+    background: var(--neutrals-50);
+    border: 1px solid var(--action-100);
+    border-radius: 8px;
+    height: 52px;
+    display: flex; align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    font-size: 16px; font-weight: 500;
+    color: var(--neutrals-800); line-height: 24px;
+    width: 100%; text-align: left;
+    font-family: var(--font);
+    user-select: none;
+  }
+  .option-item:hover { background: var(--action-50); }
+  .option-item.selected {
+    background: var(--action-50);
+    border-color: var(--action-500);
+    color: var(--neutrals-900); font-weight: 700;
+  }
+  .check-dot {
+    width: 20px; height: 20px;
+    border: 2px solid var(--action-100);
+    border-radius: 50%;
+    margin-right: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .option-item.selected .check-dot {
+    background: var(--action-500); border-color: var(--action-500);
+  }
+  .option-item.selected .check-dot::after {
+    content: ''; width: 8px; height: 8px;
+    background: white; border-radius: 50%;
+  }
+  .check-box {
+    width: 20px; height: 20px;
+    border: 2px solid var(--action-100);
+    border-radius: 4px;
+    margin-right: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .option-item.selected .check-box {
+    background: var(--action-500); border-color: var(--action-500);
+  }
+  .option-item.selected .check-box::after {
+    content: '✓'; color: white; font-size: 12px; font-weight: 700;
+  }
+
+  /* ── Text input ───────────────────────────────────────────────────── */
+  .text-input-wrap {
+    border-bottom: 1px solid var(--action-100);
+    padding: 4px 2px 2px; margin-top: 4px;
+  }
+  .text-input-wrap textarea {
+    width: 100%; border: none; outline: none;
+    font-family: var(--font); font-size: 16px; font-weight: 500;
+    color: var(--neutrals-800); line-height: 24px;
+    resize: none; min-height: 48px; background: transparent;
+  }
+  .text-input-wrap textarea::placeholder { color: var(--neutrals-500); }
+
+  /* ── Buttons ──────────────────────────────────────────────────────── */
+  .btn-primary {
+    width: 100%; height: 56px;
+    background: var(--action-500); border: none; border-radius: 12px;
+    font-family: var(--font); font-size: 16px; font-weight: 700;
+    color: var(--neutrals-50); cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+  }
+  .btn-primary:hover { background: var(--action-600); }
+  .btn-primary:disabled { opacity: 0.38; cursor: not-allowed; }
+  .btn-primary.btn-success { background: var(--success-500); }
+  .btn-primary.btn-success:hover { background: #12a86d; }
+  .btn-primary.btn-danger {
+    background: white; color: var(--error-500);
+    border: 1.5px solid var(--error-500);
+  }
+  .btn-primary.btn-danger:hover { background: #fff5f5; }
+  .cta-link {
+    background: none; border: none;
+    font-family: var(--font); font-size: 14px; font-weight: 500;
+    color: var(--neutrals-500); cursor: pointer;
+    text-decoration: underline; text-underline-offset: 2px;
+    padding: 8px 0; text-align: center; width: 100%;
+    transition: color 0.15s;
+  }
+  .cta-link:hover { color: var(--error-500); }
+
+  /* ── Likert ───────────────────────────────────────────────────────── */
+  .likert { display: flex; flex-direction: column; gap: 20px; margin-top: 8px; }
+  .likert-item { display: flex; flex-direction: column; gap: 10px; }
+  .likert-statement { font-size: 14px; font-weight: 500; color: var(--neutrals-800); line-height: 20px; }
+  .likert-scale { display: flex; gap: 6px; align-items: flex-start; }
+  .likert-scale label {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; gap: 4px; cursor: pointer;
+  }
+  .likert-scale label span { font-size: 9px; color: var(--neutrals-500); text-align: center; line-height: 12px; }
+  .likert-dot {
+    width: 36px; height: 36px;
+    border: 2px solid var(--action-100); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--neutrals-500);
+    transition: all 0.15s; cursor: pointer; font-family: var(--font);
+    background: white;
+  }
+  .likert-scale input[type=radio] { display: none; }
+  .likert-scale input[type=radio]:checked + .likert-dot {
+    background: var(--action-500); border-color: var(--action-500); color: white;
+  }
+
+  /* ── Rating 1-10 ──────────────────────────────────────────────────── */
+  .rating-scale { display: flex; gap: 3px; justify-content: space-between; }
+  .rating-scale label { flex: 1; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+  .rating-scale input[type=radio] { display: none; }
+  .rating-btn {
+    width: 100%; height: 36px;
+    border: 1px solid var(--action-100); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--neutrals-500);
+    background: var(--neutrals-50); transition: all 0.15s;
+    cursor: pointer; font-family: var(--font);
+  }
+  .rating-scale input[type=radio]:checked + .rating-btn {
+    background: var(--action-500); border-color: var(--action-500); color: white;
+  }
+  .rating-labels { display: flex; justify-content: space-between; margin-top: 6px; }
+  .rating-labels span { font-size: 10px; color: var(--neutrals-500); }
+
+  /* ── Footer ───────────────────────────────────────────────────────── */
+  .footer {
+    padding: 16px; background: var(--neutrals-50);
+    border-top: 1px solid var(--neutrals-100);
+    flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;
+  }
+
+  /* ── Emotional screen ─────────────────────────────────────────────── */
+  .emotional-wrap {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 32px 24px; text-align: center; gap: 24px;
+  }
+  .emotional-icon {
+    width: 88px; height: 88px; background: var(--action-50);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px;
+  }
+  .emotional-title { font-size: 22px; font-weight: 700; color: var(--neutrals-900); line-height: 30px; }
+  .emotional-body { font-size: 15px; font-weight: 500; color: var(--neutrals-700); line-height: 22px; }
+  .emotional-actions { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+
+  /* ── Thank you ────────────────────────────────────────────────────── */
+  .thankyou-wrap {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 32px 24px; text-align: center; gap: 20px;
+  }
+  .thankyou-icon { width: 88px; height: 88px; background: #E8F8F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .thankyou-title { font-size: 22px; font-weight: 700; color: var(--neutrals-900); line-height: 30px; }
+  .thankyou-body { font-size: 15px; font-weight: 500; color: var(--neutrals-700); line-height: 22px; }
+
+  /* ── Profile card ─────────────────────────────────────────────────── */
+  .profile-card {
+    background: var(--action-50); border: 1px solid var(--action-100);
+    border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .profile-card-title { font-size: 11px; font-weight: 700; color: var(--action-400); text-transform: uppercase; letter-spacing: 0.08em; }
+  .profile-row { display: flex; align-items: center; justify-content: space-between; }
+  .profile-label { font-size: 13px; color: var(--neutrals-500); font-weight: 500; }
+  .profile-value { font-size: 14px; color: var(--neutrals-900); font-weight: 700; }
+
+  /* ── Misc ─────────────────────────────────────────────────────────── */
+  .divider { height: 1px; background: var(--neutrals-100); }
+  .note { font-size: 13px; color: var(--neutrals-500); font-style: italic; text-align: center; line-height: 18px; }
+  .multi-hint { font-size: 12px; color: var(--neutrals-500); margin-top: 4px; text-align: right; }
+  .section-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--action-50); border: 1px solid var(--action-100);
+    border-radius: 100px; padding: 4px 12px 4px 8px;
+    font-size: 12px; font-weight: 700; color: var(--action-400); margin-bottom: 6px;
+  }
+  .section-badge .dot { width: 8px; height: 8px; background: var(--action-500); border-radius: 50%; }
+
+  /* Placeholder blocks (simula contenido existente) */
+  .base-placeholder { width: 100%; background: var(--neutrals-100); border-radius: 12px; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .screen.active { animation: fadeIn 0.22s ease; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 0 — Mi Negocio (pantalla base existente)
+     ══════════════════════════════════════════════════════ -->
+<div class="screen active" id="s0">
+  <div class="header">
+    <button class="header-icon">&#8592;</button>
+    <span class="header-title">Mi negocio</span>
+    <button class="header-icon">&#8942;</button>
+  </div>
+
+  <div class="body" style="justify-content:space-between;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="base-placeholder" style="height:90px;"></div>
+      <div class="base-placeholder" style="height:60px;"></div>
+      <div class="base-placeholder" style="height:60px;"></div>
+      <div class="base-placeholder" style="height:110px;"></div>
+      <div class="base-placeholder" style="height:60px;"></div>
+      <div class="base-placeholder" style="height:60px;"></div>
+      <div class="base-placeholder" style="height:60px;"></div>
+    </div>
+
+    <!-- CTA de texto solo — darme de baja -->
+    <div style="padding-top:20px;padding-bottom:4px;">
+      <div class="divider" style="margin-bottom:20px;"></div>
+      <button class="cta-link" onclick="goTo('s1')">Darme de baja</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 1 — Pantalla emocional (¿segura que querés irte?)
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s1">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s0')">&#8592;</button>
+    <span class="header-title">Darme de baja</span>
+    <div style="width:24px;"></div>
+  </div>
+
+  <div class="emotional-wrap">
+    <div class="emotional-icon">🫶</div>
+    <div class="emotional-title">Nos apena mucho<br>verte ir</div>
+    <div class="emotional-body">
+      Creemos que juntos podemos revertir la situación. Si nos contás un poco más sobre lo que está pasando, podemos ayudarte a encontrar el camino.
+    </div>
+    <div class="emotional-actions">
+      <button class="btn-primary btn-success" onclick="goTo('s0')">
+        ✓ &nbsp; Cambié de idea, quiero seguir y que me ayuden a crecer
+      </button>
+      <button class="btn-primary btn-danger" onclick="goTo('s2')">
+        Gracias, pero quiero abandonar el negocio
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 2 — Perfil confirmado (datos, no preguntas)
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s2">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s1')">&#8592;</button>
+    <span class="header-title">Antes de irte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:8%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>Tu perfil</div>
+      <div class="section-title">Antes de comenzar, confirmamos tus datos</div>
+      <div class="section-subtitle">No necesitamos que los completes — ya los tenemos. Solo verificá que estén correctos.</div>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-card-title">Datos de tu cuenta de consultor/a</div>
+      <div class="profile-row">
+        <span class="profile-label">Nombre</span>
+        <span class="profile-value">María González</span>
+      </div>
+      <div class="divider"></div>
+      <div class="profile-row">
+        <span class="profile-label">Tiempo activa</span>
+        <span class="profile-value">14 meses</span>
+      </div>
+      <div class="divider"></div>
+      <div class="profile-row">
+        <span class="profile-label">Nivel actual</span>
+        <span class="profile-value">Consultora</span>
+      </div>
+      <div class="divider"></div>
+      <div class="profile-row">
+        <span class="profile-label">Dedicación</span>
+        <span class="profile-value">Ingreso complementario</span>
+      </div>
+      <div class="divider"></div>
+      <div class="profile-row">
+        <span class="profile-label">País</span>
+        <span class="profile-value">Argentina</span>
+      </div>
+    </div>
+
+    <div class="note">¿Algo no es correcto? Podés actualizarlo desde tu perfil antes de continuar.</div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" onclick="goTo('s3')">Sí, son mis datos — continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 3 — B1: Razón principal
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s3">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s2')">&#8592;</button>
+    <span class="header-title">Tu experiencia</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:20%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>1 de 8</div>
+      <div class="section-title">¿Por qué decidiste irte?</div>
+      <div class="section-subtitle">Elegí la razón principal. Solo una.</div>
+    </div>
+
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+        <span class="check-dot"></span>No pude generar los ingresos que esperaba
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+        <span class="check-dot"></span>No recibí suficiente apoyo de mi upline o líder
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+        <span class="check-dot"></span>El tiempo requerido era incompatible con mi vida
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+        <span class="check-dot"></span>Los productos eran difíciles de vender en mi entorno
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+        <span class="check-dot"></span>El negocio no era lo que me habían presentado
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" id="s3-next" disabled onclick="goTo('s4')">Continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 4 — B2: Otros factores (multi-select, máx 3)
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s4">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s3')">&#8592;</button>
+    <span class="header-title">Tu experiencia</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:32%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>2 de 8</div>
+      <div class="section-title">¿Hubo otros factores que también influyeron?</div>
+      <div class="section-subtitle">Podés marcar hasta 3.</div>
+    </div>
+
+    <div class="options-list" id="s4-list">
+      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+        <span class="check-box"></span>Los ingresos no cubrían ni los gastos básicos del negocio
+      </button>
+      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+        <span class="check-box"></span>Me sentí solo/a, sin comunidad ni pares cercanos
+      </button>
+      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+        <span class="check-box"></span>La capacitación y las herramientas no eran suficientes
+      </button>
+      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+        <span class="check-box"></span>Los objetivos para subir de rango eran inalcanzables
+      </button>
+      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+        <span class="check-box"></span>Tuve conflictos o presión excesiva con mi upline
+      </button>
+    </div>
+    <div class="multi-hint" id="s4-hint">Seleccioná hasta 3 opciones</div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" onclick="goTo('s5')">Continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 5 — B3/B4: Evento detonador
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s5">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s4')">&#8592;</button>
+    <span class="header-title">Tu experiencia</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:44%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>3 de 8</div>
+      <div class="section-title">¿Hubo un momento concreto que terminó de definir tu decisión?</div>
+    </div>
+
+    <div class="options-list" id="s5-list">
+      <button class="option-item" onclick="selectSingle(this,'s5-next'); hideEl('s5-open')">
+        <span class="check-dot"></span>No, fue un desgaste gradual
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s5-next'); showEl('s5-open')">
+        <span class="check-dot"></span>Sí — un conflicto con mi upline o líder
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s5-next'); showEl('s5-open')">
+        <span class="check-dot"></span>Sí — un mes con ingresos muy bajos o nulos
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s5-next'); showEl('s5-open')">
+        <span class="check-dot"></span>Sí — encontré una mejor oportunidad en otro lugar
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s5-next'); showEl('s5-open')">
+        <span class="check-dot"></span>Sí — una situación personal o familiar
+      </button>
+    </div>
+
+    <div id="s5-open" style="display:none;">
+      <p style="font-size:13px;font-weight:700;color:var(--neutrals-500);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Contanos un poco más (opcional)</p>
+      <div class="text-input-wrap">
+        <textarea placeholder="Escribí aquí..." rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" id="s5-next" disabled onclick="goTo('s6')">Continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 6 — C1: Ingresos vs expectativas
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s6">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s5')">&#8592;</button>
+    <span class="header-title">Ingresos</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:56%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>4 de 8</div>
+      <div class="section-title">¿Los ingresos cumplieron tus expectativas iniciales?</div>
+    </div>
+
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+        <span class="check-dot"></span>Superaron mis expectativas
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+        <span class="check-dot"></span>Estuvieron a la altura de lo que esperaba
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+        <span class="check-dot"></span>Fueron bastante menores a lo que esperaba
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+        <span class="check-dot"></span>Fueron muy inferiores — casi no generé ingresos
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+        <span class="check-dot"></span>Nunca llegué a generar ingresos significativos
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" id="s6-next" disabled onclick="goTo('s7')">Continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 7 — D: Apoyo (Likert)
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s7">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s6')">&#8592;</button>
+    <span class="header-title">Apoyo recibido</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:68%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>5 de 8</div>
+      <div class="section-title">¿Cómo fue el apoyo que recibiste?</div>
+      <div class="section-subtitle">Del 1 (muy en desacuerdo) al 5 (muy de acuerdo)</div>
+    </div>
+
+    <div class="likert">
+      <div class="likert-item">
+        <div class="likert-statement">Mi upline me apoyó activamente durante mi tiempo en Just</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="d1" value="1"><div class="likert-dot">1</div><span>Muy en desacuerdo</span></label>
+          <label><input type="radio" name="d1" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="d1" value="3"><div class="likert-dot">3</div><span>Neutral</span></label>
+          <label><input type="radio" name="d1" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="d1" value="5"><div class="likert-dot">5</div><span>Muy de acuerdo</span></label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="likert-item">
+        <div class="likert-statement">Recibí una inducción adecuada antes de empezar a vender</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="d2" value="1"><div class="likert-dot">1</div></label>
+          <label><input type="radio" name="d2" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="d2" value="3"><div class="likert-dot">3</div></label>
+          <label><input type="radio" name="d2" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="d2" value="5"><div class="likert-dot">5</div></label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="likert-item">
+        <div class="likert-statement">Me sentía parte de una comunidad dentro de Just</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="d3" value="1"><div class="likert-dot">1</div></label>
+          <label><input type="radio" name="d3" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="d3" value="3"><div class="likert-dot">3</div></label>
+          <label><input type="radio" name="d3" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="d3" value="5"><div class="likert-dot">5</div></label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="likert-item">
+        <div class="likert-statement">Cuando tenía dudas, alguien me ayudaba a resolverlas</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="d4" value="1"><div class="likert-dot">1</div></label>
+          <label><input type="radio" name="d4" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="d4" value="3"><div class="likert-dot">3</div></label>
+          <label><input type="radio" name="d4" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="d4" value="5"><div class="likert-dot">5</div></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" onclick="goTo('s8')">Continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 8 — E2: Obstáculos con el producto
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s8">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s7')">&#8592;</button>
+    <span class="header-title">Los productos</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>6 de 8</div>
+      <div class="section-title">¿Cuál fue el mayor obstáculo para vender?</div>
+      <div class="section-subtitle">Elegí la más importante.</div>
+    </div>
+
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+        <span class="check-dot"></span>El precio era demasiado alto para mi mercado
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+        <span class="check-dot"></span>Mis clientes no conocían la marca Just
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+        <span class="check-dot"></span>No tenía suficiente material de apoyo o muestras
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+        <span class="check-dot"></span>Los clientes no veían diferencia con otras marcas
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+        <span class="check-dot"></span>No tuve obstáculos con el producto — el problema era otro
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" id="s8-next" disabled onclick="goTo('s9')">Continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 9 — G1: Cómo te presentaron el negocio
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s9">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s8')">&#8592;</button>
+    <span class="header-title">Expectativas</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:90%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>7 de 8</div>
+      <div class="section-title">¿Cómo te presentaron el negocio cuando te uniste?</div>
+    </div>
+
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+        <span class="check-dot"></span>Con información realista sobre el esfuerzo requerido
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+        <span class="check-dot"></span>Con entusiasmo, pero de forma honesta
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+        <span class="check-dot"></span>Con expectativas algo exageradas
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+        <span class="check-dot"></span>Con promesas que no reflejaban la realidad
+      </button>
+      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+        <span class="check-dot"></span>Con muy poca información — aprendí solo/a
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" id="s9-next" disabled onclick="goTo('s10')">Continuar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 10 — I: Pregunta abierta + Rating (último paso)
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s10">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s9')">&#8592;</button>
+    <span class="header-title">Para cerrar</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:98%"></div></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-badge"><span class="dot"></span>8 de 8</div>
+      <div class="section-title">Si Just pudiera cambiar una sola cosa para que hubieras continuado, ¿cuál sería?</div>
+    </div>
+    <div class="text-input-wrap">
+      <textarea placeholder="Escribí tu respuesta aquí..." rows="4"></textarea>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <div class="section-title" style="font-size:17px;margin-bottom:14px;">¿Cómo calificás tu experiencia general en Just?</div>
+      <div class="rating-scale">
+        <label><input type="radio" name="rating" value="1"><div class="rating-btn">1</div></label>
+        <label><input type="radio" name="rating" value="2"><div class="rating-btn">2</div></label>
+        <label><input type="radio" name="rating" value="3"><div class="rating-btn">3</div></label>
+        <label><input type="radio" name="rating" value="4"><div class="rating-btn">4</div></label>
+        <label><input type="radio" name="rating" value="5"><div class="rating-btn">5</div></label>
+        <label><input type="radio" name="rating" value="6"><div class="rating-btn">6</div></label>
+        <label><input type="radio" name="rating" value="7"><div class="rating-btn">7</div></label>
+        <label><input type="radio" name="rating" value="8"><div class="rating-btn">8</div></label>
+        <label><input type="radio" name="rating" value="9"><div class="rating-btn">9</div></label>
+        <label><input type="radio" name="rating" value="10"><div class="rating-btn">10</div></label>
+      </div>
+      <div class="rating-labels">
+        <span>Muy negativa</span>
+        <span>Excelente</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn-primary" onclick="goTo('s11')">Enviar y confirmar baja</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 11 — Gracias / Confirmación
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s11">
+  <div class="header">
+    <div style="width:24px;"></div>
+    <span class="header-title">Just</span>
+    <div style="width:24px;"></div>
+  </div>
+
+  <div class="thankyou-wrap">
+    <div class="thankyou-icon">🙏</div>
+    <div class="thankyou-title">Gracias por tu honestidad</div>
+    <div class="thankyou-body">
+      Tu baja ha sido procesada. Tu retroalimentación nos ayuda a construir un mejor Just para quienes vienen después.
+    </div>
+    <div class="thankyou-body" style="margin-top:4px;">
+      Recordá que siempre podés volver. Las puertas de Just están abiertas para vos. 💙
+    </div>
+    <button class="btn-primary" style="margin-top:24px;" onclick="goTo('s0')">
+      Volver al inicio
+    </button>
+  </div>
+</div>
+
+<script>
+  function goTo(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(id);
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  // Single-select: deselecciona los demás, activa el botón Continuar dado
+  function selectSingle(el, nextBtnId) {
+    const list = el.closest('.options-list');
+    list.querySelectorAll('.option-item').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    if (nextBtnId) {
+      const btn = document.getElementById(nextBtnId);
+      if (btn) btn.removeAttribute('disabled');
+    }
+  }
+
+  // Multi-select con límite
+  function selectMulti(el, listId, max, hintId) {
+    el.classList.toggle('selected');
+    const list = document.getElementById(listId);
+    const selected = list.querySelectorAll('.option-item.selected');
+    if (selected.length > max) el.classList.remove('selected');
+    const n = list.querySelectorAll('.option-item.selected').length;
+    const hint = document.getElementById(hintId);
+    if (hint) hint.textContent = n === 0 ? `Seleccioná hasta ${max} opciones` : `${n} de ${max} seleccionadas`;
+  }
+
+  function showEl(id) { const e = document.getElementById(id); if(e) e.style.display='block'; }
+  function hideEl(id) { const e = document.getElementById(id); if(e) e.style.display='none'; }
+</script>
+</body>
+</html>
