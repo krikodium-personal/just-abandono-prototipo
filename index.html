@@ -306,31 +306,170 @@
 <body>
 
 <!-- ═══════════════════════════════════════════════════════
-     SCREEN 0 — Mi Negocio (pantalla base existente)
+     SCREEN 0 — Tu Cuenta Just (pantalla base Figma 1449-2592)
      ══════════════════════════════════════════════════════ -->
 <div class="screen active" id="s0">
+
+  <!-- Header sticky -->
   <div class="header">
-    <button class="header-icon">&#8592;</button>
-    <span class="header-title">Mi negocio</span>
-    <button class="header-icon">&#8942;</button>
+    <button class="header-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#171A22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <span class="header-title">Tu Cuenta Just</span>
+    <button class="header-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="#171A22" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="#171A22" stroke-width="1.5"/></svg>
+    </button>
   </div>
 
-  <div class="body" style="justify-content:space-between;">
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div class="base-placeholder" style="height:90px;"></div>
-      <div class="base-placeholder" style="height:60px;"></div>
-      <div class="base-placeholder" style="height:60px;"></div>
-      <div class="base-placeholder" style="height:110px;"></div>
-      <div class="base-placeholder" style="height:60px;"></div>
-      <div class="base-placeholder" style="height:60px;"></div>
-      <div class="base-placeholder" style="height:60px;"></div>
+  <!-- Scroll body -->
+  <div style="flex:1;overflow-y:auto;background:linear-gradient(to left,#fafafc,#f5f6ff 99%);padding:24px 13px 32px;">
+
+    <!-- Card consultora — perfil -->
+    <div style="background:white;border-radius:16px;box-shadow:10px 10px 25px rgba(136,137,219,0.15);margin-bottom:24px;overflow:hidden;">
+      <div style="padding:24px 16px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <!-- Avatar placeholder -->
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#99ADE5,#5AAFF1);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;font-weight:700;font-family:var(--font);">A</div>
+          <div style="flex:1;">
+            <div style="font-size:20px;font-weight:700;color:#171A22;line-height:26px;margin-bottom:8px;">Andrea Palomeque</div>
+            <div style="font-size:14px;font-weight:500;color:#171A22;line-height:20px;">CLAVE: 15786</div>
+            <div style="font-size:14px;font-weight:500;color:#171A22;line-height:20px;">Región Herzogenbuchsee</div>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #DDD;padding:16px;">
+        <div style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+          <span style="font-size:16px;font-weight:700;color:#5AAFF1;font-family:var(--font);">Editar tu Cuenta Just</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#5AAFF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card nivel consultora -->
+    <div style="background:white;border-radius:16px;box-shadow:10px 10px 25px rgba(136,137,219,0.15);margin-bottom:24px;overflow:hidden;">
+      <div style="padding:24px 16px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <span style="font-size:26px;font-weight:700;color:#171A22;font-family:var(--font);">Consultora</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="#16BE7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="#16BE7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="font-size:14px;font-weight:500;color:#171A22;line-height:20px;margin-bottom:24px;">¿Sabías que si te nombrás Líder de Grupo<br>ganarías el 40% de tu venta personal?</div>
+        <div style="border-bottom:1px solid #DDD;padding-bottom:24px;margin-bottom:16px;">
+          <div style="font-size:12px;font-weight:500;color:#908F9A;letter-spacing:0.24px;text-transform:uppercase;margin-bottom:4px;">PRÓXIMO NIVEL</div>
+          <div style="font-size:16px;font-weight:700;color:#171A22;font-family:var(--font);">Lider de Grupo</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:12px;font-weight:700;color:#171A22;text-transform:uppercase;letter-spacing:0.24px;font-family:var(--font);">Calificaciones</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#171A22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div style="border-top:1px solid #DDD;padding:16px;">
+        <div style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+          <span style="font-size:16px;font-weight:700;color:#5AAFF1;font-family:var(--font);">Tu plan de Negocio</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#5AAFF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tu saldo -->
+    <div style="margin-bottom:24px;">
+      <div style="font-size:20px;font-weight:500;color:#171A22;padding:0 16px;margin-bottom:16px;font-family:var(--font);">Tu saldo</div>
+      <div style="background:white;border-radius:16px;box-shadow:10px 10px 25px rgba(136,137,219,0.15);padding:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="font-size:32px;font-weight:700;color:#171A22;line-height:40px;font-family:'DM Sans',sans-serif;">$ 8.090</div>
+            <div style="font-size:14px;font-weight:500;color:#171A22;font-family:var(--font);">Cuenta Corriente</div>
+          </div>
+          <div style="width:1px;height:68px;background:#DDD;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <div style="font-size:32px;font-weight:700;color:#171A22;line-height:40px;font-family:'DM Sans',sans-serif;">$ 43.500</div>
+            <div style="font-size:14px;font-weight:500;color:#171A22;font-family:var(--font);">Just Coins</div>
+          </div>
+        </div>
+        <button style="width:100%;height:56px;background:white;border:1.5px solid #5AAFF1;border-radius:12px;font-size:16px;font-weight:700;color:#5AAFF1;font-family:var(--font);cursor:pointer;">Ver Estado de Cuenta</button>
+      </div>
+    </div>
+
+    <!-- Historial de Ventas -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:4px;padding:0 16px;margin-bottom:16px;">
+        <span style="font-size:20px;font-weight:500;color:#171A22;font-family:var(--font);">Historial de Ventas</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#908F9A" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="12" stroke="#908F9A" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="16" x2="12.01" y2="16" stroke="#908F9A" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div style="background:white;border-radius:16px;box-shadow:10px 10px 25px rgba(136,137,219,0.15);overflow:hidden;">
+        <div style="padding:24px 16px 16px;font-size:14px;color:#171A22;font-family:var(--font);">
+          <span style="font-weight:500;">Comisionó como: </span><span style="font-weight:700;">Consultora</span>
+        </div>
+        <!-- Mini gráfico SVG -->
+        <div style="padding:0 16px 8px;">
+          <svg width="100%" height="80" viewBox="0 0 317 80" fill="none" preserveAspectRatio="none">
+            <polyline points="0,60 50,45 100,50 150,35 200,40 250,20 317,15" stroke="#5AAFF1" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="0,60 50,45 100,50 150,35 200,40 250,20 317,15 317,80 0,80" fill="rgba(90,175,241,0.08)"/>
+          </svg>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;">
+            <span style="font-size:12px;color:#171A22;font-family:'DM Sans',sans-serif;">07/20</span>
+            <span style="font-size:12px;color:#171A22;font-family:'DM Sans',sans-serif;">08/20</span>
+            <span style="font-size:12px;color:#171A22;font-family:'DM Sans',sans-serif;">09/20</span>
+            <span style="font-size:12px;color:#171A22;font-family:'DM Sans',sans-serif;">10/20</span>
+            <span style="font-size:12px;color:white;background:#5AAFF1;border-radius:100px;padding:4px 10px;font-family:'DM Sans',sans-serif;">11/20</span>
+            <span style="font-size:12px;color:#171A22;font-family:'DM Sans',sans-serif;">12/20</span>
+          </div>
+        </div>
+        <div style="border-top:1px solid #DDD;padding:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:16px;font-weight:700;color:#5AAFF1;font-family:var(--font);">Ocultar detalle</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 15l-6-6-6 6" stroke="#5AAFF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div style="padding:0 16px 8px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;background:#ECF5FE;border-radius:10px;padding:12px;margin-bottom:4px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:20px;height:20px;border-radius:50%;background:#5AAFF1;"></div>
+              <span style="font-size:12px;font-weight:700;color:#171A22;font-family:var(--font);">VENTA PERSONAL</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:14px;font-weight:700;color:#171A22;font-family:'DM Sans',sans-serif;">$ 24.548</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#171A22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:20px;height:20px;border-radius:50%;background:#99ADE5;"></div>
+              <span style="font-size:12px;font-weight:500;color:#171A22;font-family:var(--font);">VENTA POR INCORPORADAS</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:14px;color:#171A22;font-family:'DM Sans',sans-serif;">$ 13.380</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#171A22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div style="border-top:1px solid #DDD;display:flex;align-items:center;justify-content:space-between;padding:16px 0;">
+            <span style="font-size:14px;font-weight:500;color:#171A22;font-family:var(--font);">Líderes calificadas</span>
+            <span style="font-size:14px;color:#171A22;font-family:'DM Sans',sans-serif;">5</span>
+          </div>
+          <div style="border-top:1px solid #DDD;display:flex;align-items:center;justify-content:space-between;padding:16px 0;">
+            <span style="font-size:14px;font-weight:500;color:#171A22;font-family:var(--font);">Incorporadas personales</span>
+            <span style="font-size:14px;color:#171A22;font-family:'DM Sans',sans-serif;">1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Código de ética -->
+    <div style="background:white;border-radius:16px;box-shadow:10px 10px 25px rgba(136,137,219,0.15);padding:24px 16px;margin-bottom:32px;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="flex:1;display:flex;align-items:center;gap:16px;">
+          <svg width="26" height="20" viewBox="0 0 26 20" fill="none"><path d="M1 1h10a4 4 0 014 4v13a3 3 0 00-3-3H1V1z" stroke="#5AAFF1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 1H15a4 4 0 00-4 4v13a3 3 0 013-3h11V1z" stroke="#5AAFF1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:16px;font-weight:500;color:#171A22;font-family:var(--font);">Código de ética</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#171A22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
     </div>
 
     <!-- CTA de texto solo — darme de baja -->
-    <div style="padding-top:20px;padding-bottom:4px;">
+    <div style="padding:0 16px;">
       <div class="divider" style="margin-bottom:20px;"></div>
       <button class="cta-link" onclick="goTo('s1')">Darme de baja</button>
     </div>
+
   </div>
 </div>
 
