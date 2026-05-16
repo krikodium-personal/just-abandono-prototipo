@@ -57,10 +57,19 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--screen-w);
+    z-index: 100;
     flex-shrink: 0;
+  }
+  /* Compensar espacio del header fixed — aplica a todo lo que va debajo del header */
+  .screen-body {
+    margin-top: 60px;
+    flex: 1;
+    overflow-y: auto;
   }
   .header-icon {
     width: 24px; height: 24px;
@@ -81,6 +90,7 @@
     padding: 10px 20px 18px;
     box-shadow: var(--shadow-header);
     flex-shrink: 0;
+    margin-top: 60px;
   }
   .progress-track {
     width: 100%; height: 8px;
@@ -95,6 +105,9 @@
   }
 
   /* ── Body ─────────────────────────────────────────────────────────── */
+  /* .body sin progress-wrap encima: necesita margin-top para no quedar bajo el header.
+     Las pantallas con progress-wrap ya tienen el margin en .progress-wrap,
+     así que en esos casos el .body no necesita margin adicional. */
   .body {
     flex: 1;
     padding: 24px 16px;
@@ -103,6 +116,9 @@
     gap: 24px;
     overflow-y: auto;
   }
+  /* Pantallas sin progress-wrap: s1 (emotional) y s11 (thankyou) */
+  .emotional-wrap { margin-top: 60px; }
+  .thankyou-wrap  { margin-top: 60px; }
 
   /* ── Typography ───────────────────────────────────────────────────── */
   .section-title { font-size: 20px; font-weight: 700; color: var(--neutrals-900); line-height: 26px; }
@@ -322,7 +338,7 @@
   </div>
 
   <!-- Scroll body -->
-  <div style="flex:1;overflow-y:auto;background:linear-gradient(to left,#fafafc,#f5f6ff 99%);padding:24px 13px 32px;">
+  <div style="margin-top:60px;flex:1;overflow-y:auto;background:linear-gradient(to left,#fafafc,#f5f6ff 99%);padding:24px 13px 32px;">
 
     <!-- Card consultora — perfil -->
     <div style="background:white;border-radius:16px;box-shadow:10px 10px 25px rgba(136,137,219,0.15);margin-bottom:24px;overflow:hidden;">
