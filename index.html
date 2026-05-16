@@ -645,13 +645,365 @@
       Creemos que juntos podemos revertir la situación. Si nos contás un poco más sobre lo que está pasando, podemos ayudarte a encontrar el camino.
     </div>
     <div class="emotional-actions">
-      <button class="btn-primary btn-success" onclick="goTo('s0')">
+      <button class="btn-primary btn-success" onclick="goTo('sq1')">
         ✓ &nbsp; Cambié de idea, quiero seguir y que me ayuden a crecer
       </button>
       <button class="btn-primary btn-danger" onclick="goTo('s2')">
         Gracias, pero quiero abandonar el negocio
       </button>
     </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CUESTIONARIO "ME QUEDO" — sq1 a sq9
+     Tono: cálido, optimista, empático
+     ══════════════════════════════════════════════════════ -->
+
+<!-- sq1 — ¿Qué te hizo dudar? -->
+<div class="screen" id="sq1">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s1')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:10%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>1 de 8</div>
+      <div class="section-title">¡Qué bueno que te quedás! 🎉<br>¿Qué te hizo dudar?</div>
+      <div class="section-subtitle">Contarnos te ayuda a encontrar el camino. Elegí la razón principal.</div>
+    </div>
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'sq1-next')"><span class="check-dot"></span>Me costó generar ingresos y me desanimé</button>
+      <button class="option-item" onclick="selectSingle(this,'sq1-next')"><span class="check-dot"></span>Sentí que no tenía el apoyo que necesitaba</button>
+      <button class="option-item" onclick="selectSingle(this,'sq1-next')"><span class="check-dot"></span>No me alcanzaba el tiempo para dedicarme</button>
+      <button class="option-item" onclick="selectSingle(this,'sq1-next')"><span class="check-dot"></span>Me resultó difícil vender en mi entorno</button>
+      <button class="option-item" onclick="selectSingle(this,'sq1-next')"><span class="check-dot"></span>Me sentí sola o sin motivación para seguir</button>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" id="sq1-next" disabled onclick="goTo('sq2')" style="background:var(--success-500);">Continuar</button>
+  </div>
+</div>
+
+<!-- sq2 — ¿Qué otros factores influyeron? -->
+<div class="screen" id="sq2">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('sq1')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:22%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>2 de 8</div>
+      <div class="section-title">¿Hubo algo más que te pesó?</div>
+      <div class="section-subtitle">Podés marcar hasta 3. Queremos entender todo el panorama. 💙</div>
+    </div>
+    <div class="options-list" id="sq2-list">
+      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>Los ingresos no cubrían mis gastos del negocio</button>
+      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>No me sentía parte de una comunidad</button>
+      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>La capacitación no era suficiente para mí</button>
+      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>Los objetivos para subir de nivel me parecían lejanos</button>
+      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>Hubo tensiones con mi upline o equipo</button>
+    </div>
+    <div class="multi-hint" id="sq2-hint">Seleccioná hasta 3 opciones</div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" onclick="goTo('sq3')" style="background:var(--success-500);">Continuar</button>
+  </div>
+</div>
+
+<!-- sq3 — ¿Cuánto tiempo llevas pensándolo? -->
+<div class="screen" id="sq3">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('sq2')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:34%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>3 de 8</div>
+      <div class="section-title">¿Hace cuánto venías con esta idea?</div>
+      <div class="section-subtitle">Es completamente normal atravesar momentos difíciles. Lo importante es que seguís acá. 🌱</div>
+    </div>
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'sq3-next')"><span class="check-dot"></span>Fue algo repentino, no lo venía pensando</button>
+      <button class="option-item" onclick="selectSingle(this,'sq3-next')"><span class="check-dot"></span>Llevaba 1 a 3 meses con dudas</button>
+      <button class="option-item" onclick="selectSingle(this,'sq3-next')"><span class="check-dot"></span>Llevaba 4 a 6 meses pensándolo</button>
+      <button class="option-item" onclick="selectSingle(this,'sq3-next')"><span class="check-dot"></span>Hace más de 6 meses que me lo preguntaba</button>
+      <button class="option-item" onclick="selectSingle(this,'sq3-next')"><span class="check-dot"></span>Nunca me comprometí del todo con el negocio</button>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" id="sq3-next" disabled onclick="goTo('sq4')" style="background:var(--success-500);">Continuar</button>
+  </div>
+</div>
+
+<!-- sq4 — ¿Cómo estás con los ingresos? -->
+<div class="screen" id="sq4">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('sq3')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:46%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>4 de 8</div>
+      <div class="section-title">¿Cómo fue tu experiencia con los ingresos hasta ahora?</div>
+      <div class="section-subtitle">Saber esto nos ayuda a proponerte el plan que mejor se adapta a vos.</div>
+    </div>
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'sq4-next')"><span class="check-dot"></span>Superaron mis expectativas</button>
+      <button class="option-item" onclick="selectSingle(this,'sq4-next')"><span class="check-dot"></span>Fueron razonables, aunque me gustaría ganar más</button>
+      <button class="option-item" onclick="selectSingle(this,'sq4-next')"><span class="check-dot"></span>Fueron menores a lo que esperaba</button>
+      <button class="option-item" onclick="selectSingle(this,'sq4-next')"><span class="check-dot"></span>Casi no generé ingresos todavía</button>
+      <button class="option-item" onclick="selectSingle(this,'sq4-next')"><span class="check-dot"></span>No los ingresos, el problema era otro</button>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" id="sq4-next" disabled onclick="goTo('sq5')" style="background:var(--success-500);">Continuar</button>
+  </div>
+</div>
+
+<!-- sq5 — Apoyo recibido (Likert) -->
+<div class="screen" id="sq5">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('sq4')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:58%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>5 de 8</div>
+      <div class="section-title">¿Cómo te sentiste con el apoyo que recibiste?</div>
+      <div class="section-subtitle">Del 1 (muy en desacuerdo) al 5 (muy de acuerdo). Tu respuesta nos ayuda a mejorar. 🤝</div>
+    </div>
+    <div class="likert">
+      <div class="likert-item">
+        <div class="likert-statement">Mi upline o líder estuvo presente cuando lo necesité</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="sq5d1" value="1"><div class="likert-dot">1</div><span>Muy en desacuerdo</span></label>
+          <label><input type="radio" name="sq5d1" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="sq5d1" value="3"><div class="likert-dot">3</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d1" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="sq5d1" value="5"><div class="likert-dot">5</div><span>Muy de acuerdo</span></label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="likert-item">
+        <div class="likert-statement">La inducción inicial me preparó bien para vender</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="sq5d2" value="1"><div class="likert-dot">1</div></label>
+          <label><input type="radio" name="sq5d2" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="sq5d2" value="3"><div class="likert-dot">3</div></label>
+          <label><input type="radio" name="sq5d2" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="sq5d2" value="5"><div class="likert-dot">5</div></label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="likert-item">
+        <div class="likert-statement">Me sentía parte de un equipo y una comunidad</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="sq5d3" value="1"><div class="likert-dot">1</div></label>
+          <label><input type="radio" name="sq5d3" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="sq5d3" value="3"><div class="likert-dot">3</div></label>
+          <label><input type="radio" name="sq5d3" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="sq5d3" value="5"><div class="likert-dot">5</div></label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="likert-item">
+        <div class="likert-statement">Cuando tenía dudas, encontraba a alguien que me ayudaba</div>
+        <div class="likert-scale">
+          <label><input type="radio" name="sq5d4" value="1"><div class="likert-dot">1</div></label>
+          <label><input type="radio" name="sq5d4" value="2"><div class="likert-dot">2</div></label>
+          <label><input type="radio" name="sq5d4" value="3"><div class="likert-dot">3</div></label>
+          <label><input type="radio" name="sq5d4" value="4"><div class="likert-dot">4</div></label>
+          <label><input type="radio" name="sq5d4" value="5"><div class="likert-dot">5</div></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" onclick="goTo('sq6')" style="background:var(--success-500);">Continuar</button>
+  </div>
+</div>
+
+<!-- sq6 — ¿Qué necesitás para crecer? -->
+<div class="screen" id="sq6">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('sq5')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:70%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>6 de 8</div>
+      <div class="section-title">¿Qué te ayudaría más para sentirte cómoda y crecer? ✨</div>
+      <div class="section-subtitle">Elegí la más importante.</div>
+    </div>
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'sq6-next')"><span class="check-dot"></span>Un plan claro para empezar a generar ingresos</button>
+      <button class="option-item" onclick="selectSingle(this,'sq6-next')"><span class="check-dot"></span>Más acompañamiento y contacto con mi upline</button>
+      <button class="option-item" onclick="selectSingle(this,'sq6-next')"><span class="check-dot"></span>Capacitación práctica en ventas y redes sociales</button>
+      <button class="option-item" onclick="selectSingle(this,'sq6-next')"><span class="check-dot"></span>Conectarme con otras consultoras para no sentirme sola</button>
+      <button class="option-item" onclick="selectSingle(this,'sq6-next')"><span class="check-dot"></span>Objetivos más alcanzables para mi situación</button>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" id="sq6-next" disabled onclick="goTo('sq7')" style="background:var(--success-500);">Continuar</button>
+  </div>
+</div>
+
+<!-- sq7 — ¿Cómo te gustaría que te contactemos? -->
+<div class="screen" id="sq7">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('sq6')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:82%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>7 de 8</div>
+      <div class="section-title">¿Cómo te gustaría que te ayudemos a partir de ahora?</div>
+      <div class="section-subtitle">Queremos acompañarte de la forma que más te sume.</div>
+    </div>
+    <div class="options-list">
+      <button class="option-item" onclick="selectSingle(this,'sq7-next')"><span class="check-dot"></span>Que mi upline me contacte para armar un plan juntas</button>
+      <button class="option-item" onclick="selectSingle(this,'sq7-next')"><span class="check-dot"></span>Acceder a capacitaciones y materiales de apoyo</button>
+      <button class="option-item" onclick="selectSingle(this,'sq7-next')"><span class="check-dot"></span>Unirme a un grupo de consultoras para compartir experiencias</button>
+      <button class="option-item" onclick="selectSingle(this,'sq7-next')"><span class="check-dot"></span>Que me expliquen mejor el plan de compensación</button>
+      <button class="option-item" onclick="selectSingle(this,'sq7-next')"><span class="check-dot"></span>Por ahora solo quiero seguir a mi ritmo</button>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" id="sq7-next" disabled onclick="goTo('sq8')" style="background:var(--success-500);">Continuar</button>
+  </div>
+</div>
+
+<!-- sq8 — Pregunta abierta + rating -->
+<div class="screen" id="sq8">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('sq7')">&#8592;</button>
+    <span class="header-title">Queremos ayudarte</span>
+    <button class="header-icon" onclick="goTo('s0')">&#215;</button>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:94%;background:var(--success-500);"></div></div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>8 de 8</div>
+      <div class="section-title">¿Hay algo más que quieras contarnos? 💬</div>
+      <div class="section-subtitle">Cualquier cosa que sientas que nos ayudaría a ayudarte mejor.</div>
+    </div>
+    <div class="text-input-wrap">
+      <textarea placeholder="Escribí aquí lo que quieras..." rows="4"></textarea>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-title" style="font-size:17px;margin-bottom:6px;">¿Cómo te sentís con Just en este momento?</div>
+      <div class="section-subtitle" style="margin-bottom:14px;">1 = muy desanimada &nbsp;·&nbsp; 10 = con muchas ganas de crecer</div>
+      <div class="rating-scale">
+        <label><input type="radio" name="sq-rating" value="1"><div class="rating-btn">1</div></label>
+        <label><input type="radio" name="sq-rating" value="2"><div class="rating-btn">2</div></label>
+        <label><input type="radio" name="sq-rating" value="3"><div class="rating-btn">3</div></label>
+        <label><input type="radio" name="sq-rating" value="4"><div class="rating-btn">4</div></label>
+        <label><input type="radio" name="sq-rating" value="5"><div class="rating-btn">5</div></label>
+        <label><input type="radio" name="sq-rating" value="6"><div class="rating-btn">6</div></label>
+        <label><input type="radio" name="sq-rating" value="7"><div class="rating-btn">7</div></label>
+        <label><input type="radio" name="sq-rating" value="8"><div class="rating-btn">8</div></label>
+        <label><input type="radio" name="sq-rating" value="9"><div class="rating-btn">9</div></label>
+        <label><input type="radio" name="sq-rating" value="10"><div class="rating-btn">10</div></label>
+      </div>
+      <div class="rating-labels">
+        <span>Muy desanimada</span>
+        <span>Con mucha energía</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn-primary" onclick="goTo('sq9')" style="background:var(--success-500);">Enviar y ver mis recursos</button>
+  </div>
+</div>
+
+<!-- sq9 — Pantalla de cierre con recursos -->
+<div class="screen" id="sq9">
+  <div class="header">
+    <div style="width:24px;"></div>
+    <span class="header-title">Just</span>
+    <div style="width:24px;"></div>
+  </div>
+  <div class="thankyou-wrap" style="gap:16px;">
+    <div class="thankyou-icon" style="font-size:40px;">🌟</div>
+    <div class="thankyou-title">¡Gracias por quedarte, Daniela!</div>
+    <div class="thankyou-body">Leímos todo lo que nos contaste y vamos a trabajar para acompañarte mejor. Acá te dejamos algunos recursos para arrancar con fuerza.</div>
+
+    <!-- Recursos -->
+    <div style="width:100%;display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+
+      <div style="background:#E8F8F1;border:1px solid #16BE7D;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;">
+        <div style="font-size:24px;">📚</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:700;color:#171A22;font-family:var(--font);margin-bottom:2px;">Centro de capacitación</div>
+          <div style="font-size:12px;color:#908F9A;font-family:var(--font);">Videos, guías y tips para vender más</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#16BE7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div style="background:#E8F8F1;border:1px solid #16BE7D;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;">
+        <div style="font-size:24px;">👥</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:700;color:#171A22;font-family:var(--font);margin-bottom:2px;">Comunidad de consultoras</div>
+          <div style="font-size:12px;color:#908F9A;font-family:var(--font);">Conectate con otras consultoras Just</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#16BE7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div style="background:#E8F8F1;border:1px solid #16BE7D;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;">
+        <div style="font-size:24px;">🎯</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:700;color:#171A22;font-family:var(--font);margin-bottom:2px;">Tu plan de negocio</div>
+          <div style="font-size:12px;color:#908F9A;font-family:var(--font);">Revisá tus objetivos y próximos pasos</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#16BE7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div style="background:#E8F8F1;border:1px solid #16BE7D;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;">
+        <div style="font-size:24px;">💬</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:700;color:#171A22;font-family:var(--font);margin-bottom:2px;">Hablar con soporte Just</div>
+          <div style="font-size:12px;color:#908F9A;font-family:var(--font);">Contactanos si necesitás ayuda directa</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#16BE7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+    </div>
+
+    <button class="btn-primary" style="margin-top:8px;background:var(--success-500);" onclick="goTo('s0')">
+      Volver al inicio 💪
+    </button>
   </div>
 </div>
 
