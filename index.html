@@ -229,16 +229,19 @@
   }
   .likert-scale label span { font-size: 9px; color: var(--neutrals-500); text-align: center; line-height: 12px; }
   .likert-dot {
-    width: 36px; height: 36px;
-    border: 2px solid var(--action-100); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 600; color: var(--neutrals-500);
-    transition: all 0.15s; cursor: pointer; font-family: var(--font);
-    background: white;
+    width: 48px; height: 52px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 28px; line-height: 1;
+    cursor: pointer; border-radius: 10px;
+    border: 2px solid transparent;
+    transition: transform 0.15s, border-color 0.15s;
+    user-select: none;
   }
   .likert-scale input[type=radio] { display: none; }
   .likert-scale input[type=radio]:checked + .likert-dot {
-    background: var(--action-500); border-color: var(--action-500); color: white;
+    border-color: var(--action-400);
+    background: var(--action-50, #EEF3FC);
+    transform: scale(1.18);
   }
 
   /* ── Rating 1-10 ──────────────────────────────────────────────────── */
@@ -791,50 +794,58 @@
     <div>
       <div class="section-badge" style="background:#E8F8F1;border-color:#16BE7D;color:#16BE7D;"><span class="dot" style="background:var(--success-500);"></span>5 de 8</div>
       <div class="section-title">¿Cómo te sentiste con el apoyo que recibiste?</div>
-      <div class="section-subtitle">Del 1 (muy en desacuerdo) al 5 (muy de acuerdo). Tu respuesta nos ayuda a mejorar. 🤝</div>
+      <div class="section-subtitle">😢 Muy en desacuerdo &nbsp;→&nbsp; 🤩 Muy de acuerdo. Tu respuesta nos ayuda a mejorar. 🤝</div>
     </div>
     <div class="likert">
       <div class="likert-item">
         <div class="likert-statement">Mi upline o líder estuvo presente cuando lo necesité</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d1" value="1"><div class="likert-dot">1</div><span>Muy en desacuerdo</span></label>
-          <label><input type="radio" name="sq5d1" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="sq5d1" value="3"><div class="likert-dot">3</div><span>Neutral</span></label>
-          <label><input type="radio" name="sq5d1" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="sq5d1" value="5"><div class="likert-dot">5</div><span>Muy de acuerdo</span></label>
+          <label><input type="radio" name="sq5d1" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="sq5d1" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d1" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d1" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d1" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
       <div class="divider"></div>
       <div class="likert-item">
         <div class="likert-statement">La inducción inicial me preparó bien para vender</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d2" value="1"><div class="likert-dot">1</div></label>
-          <label><input type="radio" name="sq5d2" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="sq5d2" value="3"><div class="likert-dot">3</div></label>
-          <label><input type="radio" name="sq5d2" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="sq5d2" value="5"><div class="likert-dot">5</div></label>
+          <label><input type="radio" name="sq5d2" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="sq5d2" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d2" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d2" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d2" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
       <div class="divider"></div>
       <div class="likert-item">
         <div class="likert-statement">Me sentía parte de un equipo y una comunidad</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d3" value="1"><div class="likert-dot">1</div></label>
-          <label><input type="radio" name="sq5d3" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="sq5d3" value="3"><div class="likert-dot">3</div></label>
-          <label><input type="radio" name="sq5d3" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="sq5d3" value="5"><div class="likert-dot">5</div></label>
+          <label><input type="radio" name="sq5d3" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="sq5d3" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d3" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d3" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d3" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
       <div class="divider"></div>
       <div class="likert-item">
         <div class="likert-statement">Cuando tenía dudas, encontraba a alguien que me ayudaba</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d4" value="1"><div class="likert-dot">1</div></label>
-          <label><input type="radio" name="sq5d4" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="sq5d4" value="3"><div class="likert-dot">3</div></label>
-          <label><input type="radio" name="sq5d4" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="sq5d4" value="5"><div class="likert-dot">5</div></label>
+          <label><input type="radio" name="sq5d4" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="sq5d4" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d4" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d4" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d4" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
     </div>
@@ -1206,51 +1217,59 @@
     <div>
       <div class="section-badge"><span class="dot"></span>5 de 8</div>
       <div class="section-title">¿Cómo fue el apoyo que recibiste?</div>
-      <div class="section-subtitle">Del 1 (muy en desacuerdo) al 5 (muy de acuerdo)</div>
+      <div class="section-subtitle">😢 Muy en desacuerdo &nbsp;→&nbsp; 🤩 Muy de acuerdo</div>
     </div>
 
     <div class="likert">
       <div class="likert-item">
         <div class="likert-statement">Mi upline me apoyó activamente durante mi tiempo en Just</div>
         <div class="likert-scale">
-          <label><input type="radio" name="d1" value="1"><div class="likert-dot">1</div><span>Muy en desacuerdo</span></label>
-          <label><input type="radio" name="d1" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="d1" value="3"><div class="likert-dot">3</div><span>Neutral</span></label>
-          <label><input type="radio" name="d1" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="d1" value="5"><div class="likert-dot">5</div><span>Muy de acuerdo</span></label>
+          <label><input type="radio" name="d1" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="d1" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="d1" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="d1" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="d1" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
       <div class="divider"></div>
       <div class="likert-item">
         <div class="likert-statement">Recibí una inducción adecuada antes de empezar a vender</div>
         <div class="likert-scale">
-          <label><input type="radio" name="d2" value="1"><div class="likert-dot">1</div></label>
-          <label><input type="radio" name="d2" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="d2" value="3"><div class="likert-dot">3</div></label>
-          <label><input type="radio" name="d2" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="d2" value="5"><div class="likert-dot">5</div></label>
+          <label><input type="radio" name="d2" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="d2" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="d2" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="d2" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="d2" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
       <div class="divider"></div>
       <div class="likert-item">
         <div class="likert-statement">Me sentía parte de una comunidad dentro de Just</div>
         <div class="likert-scale">
-          <label><input type="radio" name="d3" value="1"><div class="likert-dot">1</div></label>
-          <label><input type="radio" name="d3" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="d3" value="3"><div class="likert-dot">3</div></label>
-          <label><input type="radio" name="d3" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="d3" value="5"><div class="likert-dot">5</div></label>
+          <label><input type="radio" name="d3" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="d3" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="d3" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="d3" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="d3" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
       <div class="divider"></div>
       <div class="likert-item">
         <div class="likert-statement">Cuando tenía dudas, alguien me ayudaba a resolverlas</div>
         <div class="likert-scale">
-          <label><input type="radio" name="d4" value="1"><div class="likert-dot">1</div></label>
-          <label><input type="radio" name="d4" value="2"><div class="likert-dot">2</div></label>
-          <label><input type="radio" name="d4" value="3"><div class="likert-dot">3</div></label>
-          <label><input type="radio" name="d4" value="4"><div class="likert-dot">4</div></label>
-          <label><input type="radio" name="d4" value="5"><div class="likert-dot">5</div></label>
+          <label><input type="radio" name="d4" value="1"><div class="likert-dot">😢</div><span>Muy en
+desacuerdo</span></label>
+          <label><input type="radio" name="d4" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="d4" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="d4" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="d4" value="5"><div class="likert-dot">🤩</div><span>Muy de
+acuerdo</span></label>
         </div>
       </div>
     </div>
