@@ -1027,20 +1027,20 @@
       <div class="section-subtitle">Elegí la razón principal. Solo una.</div>
     </div>
 
-    <div class="options-list">
-      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+    <div class="options-list" id="s3-list">
+      <button class="option-item" data-value="ingresos" onclick="selectSingle(this,'s3-next')">
         <span class="check-dot"></span>No pude generar los ingresos que esperaba
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+      <button class="option-item" data-value="apoyo" onclick="selectSingle(this,'s3-next')">
         <span class="check-dot"></span>No recibí suficiente apoyo de mi upline o líder
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+      <button class="option-item" data-value="tiempo" onclick="selectSingle(this,'s3-next')">
         <span class="check-dot"></span>El tiempo requerido era incompatible con mi vida
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+      <button class="option-item" data-value="producto" onclick="selectSingle(this,'s3-next')">
         <span class="check-dot"></span>Los productos eran difíciles de vender en mi entorno
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s3-next')">
+      <button class="option-item" data-value="expectativas" onclick="selectSingle(this,'s3-next')">
         <span class="check-dot"></span>El negocio no era lo que me habían presentado
       </button>
     </div>
@@ -1072,19 +1072,19 @@
     </div>
 
     <div class="options-list" id="s4-list">
-      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+      <button class="option-item" data-value="ingresos" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
         <span class="check-box"></span>Los ingresos no cubrían ni los gastos básicos del negocio
       </button>
-      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+      <button class="option-item" data-value="comunidad" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
         <span class="check-box"></span>Me sentí solo/a, sin comunidad ni pares cercanos
       </button>
-      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+      <button class="option-item" data-value="capacitacion" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
         <span class="check-box"></span>La capacitación y las herramientas no eran suficientes
       </button>
-      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+      <button class="option-item" data-value="rango" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
         <span class="check-box"></span>Los objetivos para subir de rango eran inalcanzables
       </button>
-      <button class="option-item" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
+      <button class="option-item" data-value="conflicto" onclick="selectMulti(this,'s4-list',3,'s4-hint')">
         <span class="check-box"></span>Tuve conflictos o presión excesiva con mi upline
       </button>
     </div>
@@ -1165,20 +1165,20 @@
       <div class="section-title">¿Los ingresos cumplieron tus expectativas iniciales?</div>
     </div>
 
-    <div class="options-list">
-      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+    <div class="options-list" id="s6-list">
+      <button class="option-item" data-value="5" onclick="selectSingle(this,'s6-next')">
         <span class="check-dot"></span>Superaron mis expectativas
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+      <button class="option-item" data-value="4" onclick="selectSingle(this,'s6-next')">
         <span class="check-dot"></span>Estuvieron a la altura de lo que esperaba
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+      <button class="option-item" data-value="3" onclick="selectSingle(this,'s6-next')">
         <span class="check-dot"></span>Fueron bastante menores a lo que esperaba
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+      <button class="option-item" data-value="2" onclick="selectSingle(this,'s6-next')">
         <span class="check-dot"></span>Fueron muy inferiores — casi no generé ingresos
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s6-next')">
+      <button class="option-item" data-value="1" onclick="selectSingle(this,'s6-next')">
         <span class="check-dot"></span>Nunca llegué a generar ingresos significativos
       </button>
     </div>
@@ -1281,20 +1281,20 @@
       <div class="section-subtitle">Elegí la más importante.</div>
     </div>
 
-    <div class="options-list">
-      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+    <div class="options-list" id="s8-list">
+      <button class="option-item" data-value="precio" onclick="selectSingle(this,'s8-next')">
         <span class="check-dot"></span>El precio era demasiado alto para mi mercado
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+      <button class="option-item" data-value="marca" onclick="selectSingle(this,'s8-next')">
         <span class="check-dot"></span>Mis clientes no conocían la marca Just
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+      <button class="option-item" data-value="materiales" onclick="selectSingle(this,'s8-next')">
         <span class="check-dot"></span>No tenía suficiente material de apoyo o muestras
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+      <button class="option-item" data-value="diferenciacion" onclick="selectSingle(this,'s8-next')">
         <span class="check-dot"></span>Los clientes no veían diferencia con otras marcas
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s8-next')">
+      <button class="option-item" data-value="ninguno" onclick="selectSingle(this,'s8-next')">
         <span class="check-dot"></span>No tuve obstáculos con el producto — el problema era otro
       </button>
     </div>
@@ -1324,20 +1324,20 @@
       <div class="section-title">¿Cómo te presentaron el negocio cuando te uniste?</div>
     </div>
 
-    <div class="options-list">
-      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+    <div class="options-list" id="s9-list">
+      <button class="option-item" data-value="realista" onclick="selectSingle(this,'s9-next')">
         <span class="check-dot"></span>Con información realista sobre el esfuerzo requerido
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+      <button class="option-item" data-value="honesto" onclick="selectSingle(this,'s9-next')">
         <span class="check-dot"></span>Con entusiasmo, pero de forma honesta
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+      <button class="option-item" data-value="exagerado" onclick="selectSingle(this,'s9-next')">
         <span class="check-dot"></span>Con expectativas algo exageradas
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+      <button class="option-item" data-value="falsas" onclick="selectSingle(this,'s9-next')">
         <span class="check-dot"></span>Con promesas que no reflejaban la realidad
       </button>
-      <button class="option-item" onclick="selectSingle(this,'s9-next')">
+      <button class="option-item" data-value="poca_info" onclick="selectSingle(this,'s9-next')">
         <span class="check-dot"></span>Con muy poca información — aprendí solo/a
       </button>
     </div>
@@ -1394,7 +1394,27 @@
   </div>
 
   <div class="footer">
-    <button class="btn-primary" onclick="goTo('s10r')">Continuar</button>
+    <button class="btn-primary" onclick="goTo('s10d')">Ver mi diagnóstico</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCREEN 10d — Diagnóstico personalizado
+     ══════════════════════════════════════════════════════ -->
+<div class="screen" id="s10d">
+  <div class="header">
+    <button class="header-icon" onclick="goTo('s10')">&#8592;</button>
+    <span class="header-title">Tu diagnóstico</span>
+    <div style="width:24px;"></div>
+  </div>
+
+  <div class="body" style="gap:20px;" id="diag-content">
+    <!-- generado dinámicamente por buildDiagnosis() -->
+  </div>
+
+  <div class="footer" style="flex-direction:column;gap:10px;">
+    <button class="btn-primary" onclick="goTo('s10r')" style="background:var(--action-500);">¿Le damos una oportunidad? 🤝</button>
+    <button class="btn-primary btn-danger" onclick="goTo('s11')">No, prefiero darme de baja</button>
   </div>
 </div>
 
@@ -1529,9 +1549,9 @@
     const target = document.getElementById(id);
     target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'instant' });
+    if (id === 's10d') buildDiagnosis();
   }
 
-  // Single-select: deselecciona los demás, activa el botón Continuar dado
   function selectSingle(el, nextBtnId) {
     const list = el.closest('.options-list');
     list.querySelectorAll('.option-item').forEach(b => b.classList.remove('selected'));
@@ -1542,7 +1562,6 @@
     }
   }
 
-  // Multi-select con límite
   function selectMulti(el, listId, max, hintId) {
     el.classList.toggle('selected');
     const list = document.getElementById(listId);
@@ -1555,6 +1574,208 @@
 
   function showEl(id) { const e = document.getElementById(id); if(e) e.style.display='block'; }
   function hideEl(id) { const e = document.getElementById(id); if(e) e.style.display='none'; }
+
+  // ─── MOTOR DE DIAGNÓSTICO DINÁMICO ───────────────────────────────────────
+
+  function getSelected(listId) {
+    const list = document.getElementById(listId);
+    if (!list) return [];
+    return Array.from(list.querySelectorAll('.option-item.selected'))
+                .map(el => el.dataset.value).filter(Boolean);
+  }
+
+  function getLikertAvg(names) {
+    let total = 0, count = 0;
+    names.forEach(name => {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      if (checked) { total += parseInt(checked.value); count++; }
+    });
+    return count > 0 ? total / count : null;
+  }
+
+  // Catálogo de causas posibles
+  const CAUSAS = {
+    ingresos: {
+      icon: '💰',
+      bg: '#FFF0F0', border: '#E05C5C', labelColor: '#B83232',
+      label: 'Factor económico',
+      titulo: 'Ingresos por debajo de las expectativas',
+      desc: 'Los ingresos que generaste no estuvieron a la altura de lo que esperabas. Esto suele resolverse con una estrategia de clientes más focalizada y apoyo en técnicas de venta.',
+    },
+    apoyo: {
+      icon: '🤝',
+      bg: '#F0F4FF', border: '#5A7FE0', labelColor: '#2B4DBE',
+      label: 'Apoyo y acompañamiento',
+      titulo: 'Faltó soporte de tu upline o líder',
+      desc: 'El acompañamiento que recibiste no fue suficiente para sostenerte en los momentos difíciles. Hay programas de mentoría y grupos de apoyo que pueden cambiar esa experiencia.',
+    },
+    tiempo: {
+      icon: '⏱️',
+      bg: '#FFF8F0', border: '#F4A742', labelColor: '#C77B00',
+      label: 'Gestión del tiempo',
+      titulo: 'El negocio requería más tiempo del disponible',
+      desc: 'La demanda de tiempo del negocio no era compatible con tu vida cotidiana. Existen modelos de actividad adaptados a consultoras con disponibilidad limitada.',
+    },
+    producto: {
+      icon: '📦',
+      bg: '#F3F0FF', border: '#8B5CF6', labelColor: '#5B21B6',
+      label: 'Barrera de producto',
+      titulo: 'Dificultades para vender en tu entorno',
+      desc: 'Los productos Just encontraron resistencia en tu mercado cercano. Con materiales de demostración y estrategia digital es posible ampliar el alcance más allá del círculo inmediato.',
+    },
+    expectativas: {
+      icon: '🎯',
+      bg: '#F0FFF8', border: '#10B981', labelColor: '#047857',
+      label: 'Expectativas vs realidad',
+      titulo: 'El negocio no era lo que te presentaron',
+      desc: 'Hubo una brecha entre lo que te prometieron y la realidad del día a día. Eso genera frustración legítima, y es algo que Just necesita corregir en cómo presenta la oportunidad.',
+    },
+    comunidad: {
+      icon: '👥',
+      bg: '#F0F4FF', border: '#5A7FE0', labelColor: '#2B4DBE',
+      label: 'Falta de comunidad',
+      titulo: 'Te sentiste sola en el proceso',
+      desc: 'La falta de pares y comunidad hace muy difícil mantenerse motivada. Los grupos de consultoras activas son un recurso que puede transformar esa sensación de aislamiento.',
+    },
+    capacitacion: {
+      icon: '📚',
+      bg: '#FFF8F0', border: '#F4A742', labelColor: '#C77B00',
+      label: 'Capacitación insuficiente',
+      titulo: 'Las herramientas y formación no eran suficientes',
+      desc: 'Sin la capacitación adecuada, es difícil saber cómo vender y crecer. El centro de capacitación de Just tiene materiales específicos para cada etapa del negocio.',
+    },
+    precio: {
+      icon: '🏷️',
+      bg: '#FFF0F0', border: '#E05C5C', labelColor: '#B83232',
+      label: 'Barrera de precio',
+      titulo: 'El precio dificultó las ventas en tu mercado',
+      desc: 'El precio de los productos Just puede ser una barrera en algunos mercados. Hay estrategias de demostración y packs de entrada que ayudan a superar esa objeción.',
+    },
+    marca: {
+      icon: '🌟',
+      bg: '#F3F0FF', border: '#8B5CF6', labelColor: '#5B21B6',
+      label: 'Desconocimiento de marca',
+      titulo: 'Tus clientes no conocían Just',
+      desc: 'El desconocimiento de marca es normal al empezar. Con el tiempo y las herramientas digitales correctas, construir reconocimiento local es alcanzable.',
+    },
+    expectativas_negocio: {
+      icon: '⚠️',
+      bg: '#FFFBF0', border: '#F59E0B', labelColor: '#B45309',
+      label: 'Presentación irreal del negocio',
+      titulo: 'Te presentaron el negocio con expectativas infladas',
+      desc: 'Las promesas que te hicieron al unirte no reflejaban la realidad del trabajo diario. Reconocemos que eso no está bien, y es algo que Just está trabajando para corregir.',
+    },
+  };
+
+  function causaCard(causa) {
+    const c = CAUSAS[causa];
+    if (!c) return '';
+    return `
+    <div style="background:${c.bg};border:1.5px solid ${c.border};border-radius:14px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;">
+      <div style="font-size:26px;flex-shrink:0;">${c.icon}</div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:${c.labelColor};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${c.label}</div>
+        <div style="font-size:15px;font-weight:600;color:#171A22;font-family:var(--font);margin-bottom:4px;">${c.titulo}</div>
+        <div style="font-size:13px;font-weight:500;color:#4A4D56;line-height:19px;font-family:var(--font);">${c.desc}</div>
+      </div>
+    </div>`;
+  }
+
+  function buildDiagnosis() {
+    // Leer respuestas
+    const razPrincipal = (getSelected('s3-list')[0]) || null;
+    const factoresExtra = getSelected('s4-list');
+    const ingresosNivel = (getSelected('s6-list')[0]) || null;
+    const obstaculoProducto = (getSelected('s8-list')[0]) || null;
+    const presentacion = (getSelected('s9-list')[0]) || null;
+    const apoyoLikert = getLikertAvg(['d1','d2','d3','d4']);
+
+    // Construir lista de causas con puntaje de relevancia
+    const scores = {};
+    const add = (key, pts) => { scores[key] = (scores[key] || 0) + pts; };
+
+    // Razón principal tiene peso máximo
+    if (razPrincipal) add(razPrincipal, 10);
+
+    // Factores secundarios
+    factoresExtra.forEach(f => {
+      if (f === 'ingresos') add('ingresos', 4);
+      if (f === 'comunidad') add('comunidad', 4);
+      if (f === 'capacitacion') add('capacitacion', 4);
+      if (f === 'conflicto') add('apoyo', 4);
+    });
+
+    // Ingresos muy bajos confirman causa económica
+    if (ingresosNivel === '1' || ingresosNivel === '2') add('ingresos', 5);
+    if (ingresosNivel === '3') add('ingresos', 2);
+
+    // Apoyo Likert bajo
+    if (apoyoLikert !== null && apoyoLikert <= 2.5) add('apoyo', 6);
+    else if (apoyoLikert !== null && apoyoLikert <= 3.5) add('apoyo', 2);
+
+    // Obstáculo producto
+    if (obstaculoProducto === 'precio') add('precio', 5);
+    else if (obstaculoProducto === 'marca') add('marca', 5);
+    else if (obstaculoProducto === 'materiales') add('capacitacion', 3);
+    else if (obstaculoProducto === 'diferenciacion') add('producto', 4);
+
+    // Presentación irreal del negocio
+    if (presentacion === 'falsas') add('expectativas_negocio', 6);
+    else if (presentacion === 'exagerado') add('expectativas_negocio', 3);
+    else if (presentacion === 'poca_info') add('capacitacion', 3);
+
+    // Ordenar por score y tomar top 3
+    const ranked = Object.entries(scores)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([key]) => key)
+      .filter(k => CAUSAS[k]);
+
+    // Si no hay nada seleccionado, mostrar mensaje genérico
+    if (ranked.length === 0) {
+      document.getElementById('diag-content').innerHTML = `
+        <div style="text-align:center;padding:8px 0 4px;">
+          <div style="font-size:36px;margin-bottom:10px;">🔍</div>
+          <div style="font-size:19px;font-weight:600;color:#171A22;line-height:26px;margin-bottom:8px;font-family:var(--font);">Analizamos tus respuestas</div>
+          <div style="font-size:14px;font-weight:500;color:#4A4D56;line-height:21px;font-family:var(--font);">Tomamos nota de todo lo que nos contaste. El equipo de Just va a revisarlo para mejorar la experiencia.</div>
+        </div>
+        <div style="background:#F5F5F7;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+          <div style="font-size:20px;">📤</div>
+          <div style="font-size:12px;font-weight:500;color:#908F9A;line-height:18px;font-family:var(--font);">Este diagnóstico fue enviado al equipo de Just para que puedan acompañarte mejor.</div>
+        </div>`;
+      return;
+    }
+
+    // Construir HTML
+    const etiqueta = (i) => i === 0 ? 'Causa principal' : i === 1 ? 'Factor secundario' : 'También influyó';
+    let html = `
+      <div style="text-align:center;padding:8px 0 4px;">
+        <div style="font-size:36px;margin-bottom:10px;">🔍</div>
+        <div style="font-size:19px;font-weight:600;color:#171A22;line-height:26px;margin-bottom:8px;font-family:var(--font);">Analizamos tus respuestas</div>
+        <div style="font-size:14px;font-weight:500;color:#4A4D56;line-height:21px;font-family:var(--font);">Identificamos los factores que más influyeron en tu decisión:</div>
+      </div>`;
+
+    ranked.forEach((key, i) => {
+      const c = CAUSAS[key];
+      html += `
+      <div style="background:${c.bg};border:1.5px solid ${c.border};border-radius:14px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:26px;flex-shrink:0;">${c.icon}</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:${c.labelColor};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${etiqueta(i)}: ${c.label}</div>
+          <div style="font-size:15px;font-weight:600;color:#171A22;font-family:var(--font);margin-bottom:4px;">${c.titulo}</div>
+          <div style="font-size:13px;font-weight:500;color:#4A4D56;line-height:19px;font-family:var(--font);">${c.desc}</div>
+        </div>
+      </div>`;
+    });
+
+    html += `
+      <div style="background:#F5F5F7;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+        <div style="font-size:20px;">📤</div>
+        <div style="font-size:12px;font-weight:500;color:#908F9A;line-height:18px;font-family:var(--font);">Este diagnóstico fue enviado al equipo de Just para que puedan acompañarte mejor.</div>
+      </div>`;
+
+    document.getElementById('diag-content').innerHTML = html;
+  }
 </script>
 </body>
 </html>
