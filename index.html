@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=375, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Just · Flujo de Baja</title>
 <style>
   /* ── Reset & base ─────────────────────────────────────────────────── */
@@ -26,11 +26,12 @@
     --error-500:    #E5334A;
     --shadow-header: 0px 1px 17px 0px rgba(23,26,34,0.06);
     --font: 'Museo Sans', 'Trebuchet MS', system-ui, sans-serif;
-    --screen-w: 375px;
+    --screen-w: min(480px, 100%);
   }
 
   html, body {
-    width: var(--screen-w);
+    width: 100%;
+    max-width: 480px;
     min-height: 100vh;
     margin: 0 auto;
     font-family: var(--font);
@@ -41,7 +42,7 @@
   .screen {
     display: none;
     flex-direction: column;
-    width: var(--screen-w);
+    width: 100%;
     min-height: 100vh;
     background: var(--neutrals-50);
     position: relative;
@@ -61,7 +62,8 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: var(--screen-w);
+    width: 100%;
+    max-width: 480px;
     z-index: 100;
     flex-shrink: 0;
   }
