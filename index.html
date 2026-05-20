@@ -23,7 +23,7 @@
     --action-50:    #ECF5FE;
     --brand-blue-500: #99ADE5;
     --success-500:  #16BE7D;
-    --error-500:    #E5334A;
+    --error-500:    #F06E69;
     --shadow-header: 0px 1px 17px 0px rgba(23,26,34,0.06);
     --font: 'Museo Sans', 'Trebuchet MS', system-ui, sans-serif;
     --screen-w: min(480px, 100%);
@@ -283,7 +283,35 @@
   }
   .emotional-title { font-size: 22px; font-weight: 600; color: var(--neutrals-900); line-height: 30px; }
   .emotional-body { font-size: 15px; font-weight: 500; color: var(--neutrals-700); line-height: 22px; }
-  .emotional-actions { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .emotional-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .emotional-actions .action-divider { display: none; }
+  .emotional-actions .action-link {
+    background: none; border: none;
+    font-family: var(--font); font-size: 16px; font-weight: 600;
+    cursor: pointer;
+    padding: 8px 0;
+    text-align: center; width: 100%;
+    transition: opacity 0.15s;
+  }
+  .emotional-actions .action-link:hover { opacity: 0.7; }
+  .emotional-actions .action-link.link-stay {
+    background: var(--action-500);
+    color: white;
+    border-radius: 14px;
+    height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 20px;
+    font-size: 16px; font-weight: 600;
+    transition: background 0.15s;
+  }
+  .emotional-actions .action-link.link-stay:hover { background: var(--action-600); opacity: 1; }
+  .emotional-actions .action-link.link-leave { color: var(--error-500); }
 
   /* ── Thank you ────────────────────────────────────────────────────── */
   .thankyou-wrap {
@@ -650,13 +678,11 @@
       Creemos que juntos podemos revertir la situación. Si nos contás un poco más sobre lo que está pasando, podemos ayudarte a encontrar el camino.
     </div>
     <div class="emotional-actions">
-      <button class="btn-primary btn-success" onclick="goTo('sq1')">
-        ✓ &nbsp; Cambié de idea, quiero seguir y que me ayuden a crecer
-      </button>
-      <button class="btn-primary btn-danger" onclick="goTo('s3')">
-        Gracias, pero quiero abandonar el negocio
-      </button>
-    </div>
+        <div class="action-divider"></div>
+        <button class="action-link link-stay" onclick="goTo('sq1')">Cambié de idea, quiero quedarme</button>
+        <div class="action-divider"></div>
+        <button class="action-link link-leave" onclick="goTo('s3')">Gracias, pero quiero abandonar el negocio</button>
+      </div>
   </div>
 </div>
 
@@ -681,12 +707,12 @@
       <div class="section-title">¡Qué bueno que te quedás! 🎉<br>¿Qué te hizo dudar?</div>
       <div class="section-subtitle">Contarnos te ayuda a encontrar el camino. Elegí la razón principal.</div>
     </div>
-    <div class="options-list">
-      <button class="option-item" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Me costó generar ingresos y me desanimé</button>
-      <button class="option-item" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Sentí que no tenía el apoyo que necesitaba</button>
-      <button class="option-item" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>No me alcanzaba el tiempo para dedicarme</button>
-      <button class="option-item" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Me resultó difícil vender en mi entorno</button>
-      <button class="option-item" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Me sentí sola o sin motivación para seguir</button>
+    <div class="options-list" id="sq1-list">
+      <button class="option-item" data-value="ingresos" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Me costó generar ingresos y me desanimé</button>
+      <button class="option-item" data-value="apoyo" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Sentí que no tenía el apoyo que necesitaba</button>
+      <button class="option-item" data-value="tiempo" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>No me alcanzaba el tiempo para dedicarme</button>
+      <button class="option-item" data-value="producto" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Me resultó difícil vender en mi entorno</button>
+      <button class="option-item" data-value="comunidad" onclick="selectSingle(this,'sq1-next','sq2')"><span class="check-dot"></span>Me sentí sola o sin motivación para seguir</button>
     </div>
   </div>
   <div class="footer" style="display:none;">
@@ -711,16 +737,16 @@
       <div class="section-subtitle">Podés marcar hasta 3. Queremos entender todo el panorama. 💙</div>
     </div>
     <div class="options-list" id="sq2-list">
-      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>Los ingresos no cubrían mis gastos del negocio</button>
-      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>No me sentía parte de una comunidad</button>
-      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>La capacitación no era suficiente para mí</button>
-      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>Los objetivos para subir de nivel me parecían lejanos</button>
-      <button class="option-item" onclick="selectMulti(this,'sq2-list',3,'sq2-hint')"><span class="check-box"></span>Hubo tensiones con mi upline o equipo</button>
+      <button class="option-item" data-value="ingresos" onclick="selectMulti(this,'sq2-list',3,'sq2-hint','sq2-next')"><span class="check-box"></span>Los ingresos no cubrían mis gastos del negocio</button>
+      <button class="option-item" data-value="comunidad" onclick="selectMulti(this,'sq2-list',3,'sq2-hint','sq2-next')"><span class="check-box"></span>No me sentía parte de una comunidad</button>
+      <button class="option-item" data-value="capacitacion" onclick="selectMulti(this,'sq2-list',3,'sq2-hint','sq2-next')"><span class="check-box"></span>La capacitación no era suficiente para mí</button>
+      <button class="option-item" data-value="rango" onclick="selectMulti(this,'sq2-list',3,'sq2-hint','sq2-next')"><span class="check-box"></span>Los objetivos para subir de nivel me parecían lejanos</button>
+      <button class="option-item" data-value="conflicto" onclick="selectMulti(this,'sq2-list',3,'sq2-hint','sq2-next')"><span class="check-box"></span>Hubo tensiones con mi upline o equipo</button>
     </div>
     <div class="multi-hint" id="sq2-hint">Seleccioná hasta 3 opciones</div>
   </div>
   <div class="footer">
-    <button class="btn-primary" onclick="goTo('sq3')" style="background:var(--success-500);">Continuar</button>
+    <button class="btn-primary" id="sq2-next" disabled onclick="goTo('sq3')" style="background:var(--success-500);">Continuar</button>
   </div>
 </div>
 
@@ -769,12 +795,12 @@
       <div class="section-title">¿Cómo fue tu experiencia con los ingresos hasta ahora?</div>
       <div class="section-subtitle">Saber esto nos ayuda a proponerte el plan que mejor se adapta a vos.</div>
     </div>
-    <div class="options-list">
-      <button class="option-item" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Superaron mis expectativas</button>
-      <button class="option-item" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Fueron razonables, aunque me gustaría ganar más</button>
-      <button class="option-item" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Fueron menores a lo que esperaba</button>
-      <button class="option-item" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Casi no generé ingresos todavía</button>
-      <button class="option-item" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>No los ingresos, el problema era otro</button>
+    <div class="options-list" id="sq4-list">
+      <button class="option-item" data-value="0" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Superaron mis expectativas</button>
+      <button class="option-item" data-value="1" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Fueron razonables, aunque me gustaría ganar más</button>
+      <button class="option-item" data-value="2" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Fueron menores a lo que esperaba</button>
+      <button class="option-item" data-value="3" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>Casi no generé ingresos todavía</button>
+      <button class="option-item" data-value="4" onclick="selectSingle(this,'sq4-next','sq5')"><span class="check-dot"></span>No los ingresos, el problema era otro</button>
     </div>
   </div>
   <div class="footer" style="display:none;">
@@ -802,12 +828,12 @@
       <div class="likert-item">
         <div class="likert-statement">Mi upline o líder estuvo presente cuando lo necesité</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d1" value="1"><div class="likert-dot">😢</div><span>Muy en
+          <label><input type="radio" name="sq5d1" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="1"><div class="likert-dot">😢</div><span>Muy en
 desacuerdo</span></label>
-          <label><input type="radio" name="sq5d1" value="2"><div class="likert-dot">😕</div></label>
-          <label><input type="radio" name="sq5d1" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
-          <label><input type="radio" name="sq5d1" value="4"><div class="likert-dot">🙂</div></label>
-          <label><input type="radio" name="sq5d1" value="5"><div class="likert-dot">🤩</div><span>Muy de
+          <label><input type="radio" name="sq5d1" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d1" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d1" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d1" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="5"><div class="likert-dot">🤩</div><span>Muy de
 acuerdo</span></label>
         </div>
       </div>
@@ -815,12 +841,12 @@ acuerdo</span></label>
       <div class="likert-item">
         <div class="likert-statement">La inducción inicial me preparó bien para vender</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d2" value="1"><div class="likert-dot">😢</div><span>Muy en
+          <label><input type="radio" name="sq5d2" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="1"><div class="likert-dot">😢</div><span>Muy en
 desacuerdo</span></label>
-          <label><input type="radio" name="sq5d2" value="2"><div class="likert-dot">😕</div></label>
-          <label><input type="radio" name="sq5d2" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
-          <label><input type="radio" name="sq5d2" value="4"><div class="likert-dot">🙂</div></label>
-          <label><input type="radio" name="sq5d2" value="5"><div class="likert-dot">🤩</div><span>Muy de
+          <label><input type="radio" name="sq5d2" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d2" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d2" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d2" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="5"><div class="likert-dot">🤩</div><span>Muy de
 acuerdo</span></label>
         </div>
       </div>
@@ -828,12 +854,12 @@ acuerdo</span></label>
       <div class="likert-item">
         <div class="likert-statement">Me sentía parte de un equipo y una comunidad</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d3" value="1"><div class="likert-dot">😢</div><span>Muy en
+          <label><input type="radio" name="sq5d3" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="1"><div class="likert-dot">😢</div><span>Muy en
 desacuerdo</span></label>
-          <label><input type="radio" name="sq5d3" value="2"><div class="likert-dot">😕</div></label>
-          <label><input type="radio" name="sq5d3" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
-          <label><input type="radio" name="sq5d3" value="4"><div class="likert-dot">🙂</div></label>
-          <label><input type="radio" name="sq5d3" value="5"><div class="likert-dot">🤩</div><span>Muy de
+          <label><input type="radio" name="sq5d3" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d3" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d3" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d3" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="5"><div class="likert-dot">🤩</div><span>Muy de
 acuerdo</span></label>
         </div>
       </div>
@@ -841,19 +867,19 @@ acuerdo</span></label>
       <div class="likert-item">
         <div class="likert-statement">Cuando tenía dudas, encontraba a alguien que me ayudaba</div>
         <div class="likert-scale">
-          <label><input type="radio" name="sq5d4" value="1"><div class="likert-dot">😢</div><span>Muy en
+          <label><input type="radio" name="sq5d4" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="1"><div class="likert-dot">😢</div><span>Muy en
 desacuerdo</span></label>
-          <label><input type="radio" name="sq5d4" value="2"><div class="likert-dot">😕</div></label>
-          <label><input type="radio" name="sq5d4" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
-          <label><input type="radio" name="sq5d4" value="4"><div class="likert-dot">🙂</div></label>
-          <label><input type="radio" name="sq5d4" value="5"><div class="likert-dot">🤩</div><span>Muy de
+          <label><input type="radio" name="sq5d4" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="2"><div class="likert-dot">😕</div></label>
+          <label><input type="radio" name="sq5d4" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="3"><div class="likert-dot">😐</div><span>Neutral</span></label>
+          <label><input type="radio" name="sq5d4" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="4"><div class="likert-dot">🙂</div></label>
+          <label><input type="radio" name="sq5d4" onchange="enableLikertBtn('sq5-next',[['sq5d1'],['sq5d2'],['sq5d3'],['sq5d4']])" value="5"><div class="likert-dot">🤩</div><span>Muy de
 acuerdo</span></label>
         </div>
       </div>
     </div>
   </div>
   <div class="footer">
-    <button class="btn-primary" onclick="goTo('sq6')" style="background:var(--success-500);">Continuar</button>
+    <button class="btn-primary" id="sq5-next" disabled onclick="goTo('sq6')" style="background:var(--success-500);">Continuar</button>
   </div>
 </div>
 
@@ -968,13 +994,18 @@ acuerdo</span></label>
     <span class="header-title">Just</span>
     <div style="width:24px;"></div>
   </div>
-  <div class="thankyou-wrap" style="gap:16px;">
-    <div class="thankyou-icon" style="font-size:40px;">🌟</div>
-    <div class="thankyou-title">¡Gracias por quedarte, Daniela!</div>
-    <div class="thankyou-body">Leímos todo lo que nos contaste y vamos a trabajar para acompañarte mejor. Acá te dejamos algunos recursos para arrancar con fuerza.</div>
+  <div class="body" style="gap:20px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding-top:8px;">
+      <div class="thankyou-icon" style="font-size:40px;">🌟</div>
+      <div class="thankyou-title">¡Gracias por quedarte, Daniela!</div>
+      <div class="thankyou-body">Leímos todo lo que nos contaste y vamos a trabajar para acompañarte mejor. Acá te dejamos algunos recursos para arrancar con fuerza.</div>
+    </div>
+
+    <!-- Diagnóstico inteligente — generado por buildRetentionDiagnosis() -->
+    <div id="sq9-diag" style="width:100%;display:flex;flex-direction:column;gap:10px;"></div>
 
     <!-- Recursos -->
-    <div style="width:100%;display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+    <div style="width:100%;display:flex;flex-direction:column;gap:10px;">
 
       <div style="background:#E8F8F1;border:1px solid #16BE7D;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;">
         <div style="font-size:24px;">📚</div>
@@ -1014,7 +1045,7 @@ acuerdo</span></label>
 
     </div>
 
-    <button class="btn-primary" style="margin-top:8px;background:var(--success-500);" onclick="goTo('s0')">
+    <button class="btn-primary" style="background:var(--success-500);" onclick="goTo('s0')">
       Volver al inicio 💪
     </button>
   </div>
@@ -1474,14 +1505,12 @@ acuerdo</span></label>
       </div>
     </div>
 
-    <div class="emotional-actions" style="width:100%;gap:12px;">
-      <button class="btn-primary btn-success" onclick="goTo('s10r-yes')">
-        ✓ &nbsp; Ok, vamos a darle una nueva oportunidad
-      </button>
-      <button class="btn-primary btn-danger" onclick="goTo('s11')">
-        Gracias, pero realmente prefiero darme de baja
-      </button>
-    </div>
+    <div class="emotional-actions" style="width:100%;">
+        <div class="action-divider"></div>
+        <button class="action-link link-stay" onclick="goTo('s10r-yes')">Ok, vamos a darle una nueva oportunidad</button>
+        <div class="action-divider"></div>
+        <button class="action-link link-leave" onclick="goTo('s11')">Gracias, pero realmente prefiero darme de baja</button>
+      </div>
   </div>
 </div>
 
@@ -1495,12 +1524,17 @@ acuerdo</span></label>
     <div style="width:24px;"></div>
   </div>
 
-  <div class="thankyou-wrap" style="gap:16px;">
-    <div class="thankyou-icon" style="font-size:40px;">🌟</div>
-    <div class="thankyou-title">¡Qué alegría, Daniela!</div>
-    <div class="thankyou-body">Tomamos nota de todo lo que nos contaste y vamos a trabajar para acompañarte mejor. Acá te dejamos algunos recursos para arrancar con fuerza.</div>
+  <div class="body" style="gap:20px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding-top:8px;">
+      <div class="thankyou-icon" style="font-size:40px;">🌟</div>
+      <div class="thankyou-title">¡Qué alegría, Daniela!</div>
+      <div class="thankyou-body">Tomamos nota de todo lo que nos contaste y vamos a trabajar para acompañarte mejor. Acá te dejamos algunos recursos para arrancar con fuerza.</div>
+    </div>
 
-    <div style="width:100%;display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+    <!-- Diagnóstico inteligente — generado por buildRetentionDiagnosis() -->
+    <div id="s10r-yes-diag" style="width:100%;display:flex;flex-direction:column;gap:10px;"></div>
+
+    <div style="width:100%;display:flex;flex-direction:column;gap:10px;">
 
       <div style="background:#E8F8F1;border:1px solid #16BE7D;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;">
         <div style="font-size:24px;">📚</div>
@@ -1540,7 +1574,7 @@ acuerdo</span></label>
 
     </div>
 
-    <button class="btn-primary" style="margin-top:8px;background:var(--success-500);" onclick="goTo('s0')">
+    <button class="btn-primary" style="background:var(--success-500);" onclick="goTo('s0')">
       Volver al inicio 💪
     </button>
   </div>
@@ -1578,6 +1612,8 @@ acuerdo</span></label>
     target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'instant' });
     if (id === 's10d') buildDiagnosis();
+    if (id === 'sq9') buildRetentionDiagnosis();
+    if (id === 's10r-yes') buildRetentionDiagnosis();
   }
 
   function selectSingle(el, nextBtnId, autoGoTo) {
@@ -1593,7 +1629,7 @@ acuerdo</span></label>
     }
   }
 
-  function selectMulti(el, listId, max, hintId) {
+  function selectMulti(el, listId, max, hintId, nextBtnId) {
     el.classList.toggle('selected');
     const list = document.getElementById(listId);
     const selected = list.querySelectorAll('.option-item.selected');
@@ -1601,6 +1637,10 @@ acuerdo</span></label>
     const n = list.querySelectorAll('.option-item.selected').length;
     const hint = document.getElementById(hintId);
     if (hint) hint.textContent = n === 0 ? `Seleccioná hasta ${max} opciones` : `${n} de ${max} seleccionadas`;
+    if (nextBtnId) {
+      const btn = document.getElementById(nextBtnId);
+      if (btn) { if (n > 0) btn.removeAttribute('disabled'); else btn.setAttribute('disabled',''); }
+    }
   }
 
   function showEl(id) { const e = document.getElementById(id); if(e) e.style.display='block'; }
@@ -1712,6 +1752,131 @@ acuerdo</span></label>
     </div>`;
   }
 
+  // ── Diagnóstico para quien decide QUEDARSE ─────────────────────────
+  function buildRetentionDiagnosis() {
+    const razPrincipal = (getSelected('sq1-list')[0]) || null;
+    const factoresExtra = getSelected('sq2-list');
+    const ingresosNivel = (getSelected('sq4-list')[0]) || null;
+    const apoyoLikert   = getLikertAvg(['sq5d1','sq5d2','sq5d3','sq5d4']);
+
+    const scores = {};
+    const add = (key, pts) => { scores[key] = (scores[key] || 0) + pts; };
+
+    // Razón principal sq1
+    if (razPrincipal) add(razPrincipal, 10);
+
+    // Factores secundarios sq2
+    factoresExtra.forEach(f => {
+      if (f === 'ingresos')     add('ingresos', 4);
+      if (f === 'comunidad')    add('comunidad', 4);
+      if (f === 'capacitacion') add('capacitacion', 4);
+      if (f === 'conflicto')    add('apoyo', 4);
+    });
+
+    // Ingresos sq4: 2=menor a esperado, 3=casi nada
+    if (ingresosNivel === '2') add('ingresos', 4);
+    if (ingresosNivel === '3') add('ingresos', 7);
+
+    // Apoyo Likert sq5
+    if (apoyoLikert !== null && apoyoLikert <= 2.5) add('apoyo', 6);
+    else if (apoyoLikert !== null && apoyoLikert <= 3.5) add('apoyo', 2);
+
+    const ranked = Object.entries(scores)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([key]) => key)
+      .filter(k => PLANES[k]);
+
+    // Buscar el container activo (sq9 o s10r-yes)
+    const container = document.getElementById('sq9-diag') || document.getElementById('s10r-yes-diag');
+    if (!container) return;
+
+    if (ranked.length === 0) {
+      container.innerHTML = `
+        <div style="background:#F0FFF8;border:1.5px solid #16BE7D;border-radius:14px;padding:18px 18px 16px;">
+          <div style="font-size:13px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;">✦ Tu plan de acción</div>
+          <div style="font-size:15px;font-weight:600;color:#171A22;font-family:var(--font);margin-bottom:4px;">Vamos a acompañarte desde el principio</div>
+          <div style="font-size:13px;font-weight:500;color:#4A4D56;line-height:19px;font-family:var(--font);">El equipo de Just revisará tu perfil y se pondrá en contacto para armar juntos un plan a medida.</div>
+        </div>`;
+      return;
+    }
+
+    let html = `
+      <div style="font-size:13px;font-weight:700;color:#047857;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px;padding:0 2px;">✦ Tu diagnóstico personalizado</div>
+      <div style="font-size:13px;font-weight:500;color:#4A4D56;line-height:19px;font-family:var(--font);margin-bottom:2px;padding:0 2px;">Identificamos en qué áreas enfocarnos para que tu negocio despegue:</div>`;
+
+    ranked.forEach((key, i) => {
+      const p = PLANES[key];
+      const badge = i === 0 ? '🎯 Prioridad 1' : i === 1 ? '📌 Prioridad 2' : '💡 También trabajaremos';
+      html += `
+      <div style="background:${p.bg};border:1.5px solid ${p.border};border-radius:14px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:26px;flex-shrink:0;">${p.icon}</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:${p.labelColor};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${badge}</div>
+          <div style="font-size:15px;font-weight:600;color:#171A22;font-family:var(--font);margin-bottom:4px;">${p.titulo}</div>
+          <div style="font-size:13px;font-weight:500;color:#4A4D56;line-height:19px;font-family:var(--font);">${p.accion}</div>
+        </div>
+      </div>`;
+    });
+
+    container.innerHTML = html;
+  }
+
+  // Catálogo de planes de acción (versión retención — tono positivo)
+  const PLANES = {
+    ingresos: {
+      icon: '💰', bg: '#F0FFF8', border: '#16BE7D', labelColor: '#047857',
+      titulo: 'Potenciar tus ingresos',
+      accion: 'Te conectamos con una mentora especializada en estrategias de venta y te asignamos un plan de primeros 30 días para empezar a generar resultados concretos.',
+    },
+    apoyo: {
+      icon: '🤝', bg: '#F0F4FF', border: '#5A7FE0', labelColor: '#2B4DBE',
+      titulo: 'Reforzar tu red de apoyo',
+      accion: 'Vamos a asignarte una upline más activa y sumarte a un grupo de consultoras en situación similar para que tengas acompañamiento constante.',
+    },
+    tiempo: {
+      icon: '⏱️', bg: '#FFF8F0', border: '#F4A742', labelColor: '#C77B00',
+      titulo: 'Adaptar el negocio a tu ritmo',
+      accion: 'Te presentamos el modelo de actividad flexible de Just, pensado para consultoras con disponibilidad limitada que quieren resultados sin sacrificar su vida personal.',
+    },
+    producto: {
+      icon: '📦', bg: '#F3F0FF', border: '#8B5CF6', labelColor: '#5B21B6',
+      titulo: 'Superar las barreras de venta',
+      accion: 'Te enviamos un kit de muestras y materiales digitales para que tus clientes puedan conocer y probar los productos antes de comprar.',
+    },
+    expectativas: {
+      icon: '🎯', bg: '#F0FFF8', border: '#16BE7D', labelColor: '#047857',
+      titulo: 'Construir expectativas reales',
+      accion: 'Vamos a mostrarte un plan de negocio honesto con metas alcanzables para tu perfil, para que puedas avanzar con claridad y sin frustraciones.',
+    },
+    comunidad: {
+      icon: '👥', bg: '#F0F4FF', border: '#5A7FE0', labelColor: '#2B4DBE',
+      titulo: 'Conectarte con tu comunidad',
+      accion: 'Te sumamos a un grupo activo de consultoras Just en tu zona para que tengas pares con quienes compartir experiencias, dudas y celebrar logros.',
+    },
+    capacitacion: {
+      icon: '📚', bg: '#FFF8F0', border: '#F4A742', labelColor: '#C77B00',
+      titulo: 'Completar tu formación',
+      accion: 'Accedés a un recorrido de capacitación personalizado según tu nivel, con videos cortos, guías y ejercicios prácticos que podés hacer a tu ritmo.',
+    },
+    precio: {
+      icon: '🏷️', bg: '#F0FFF8', border: '#16BE7D', labelColor: '#047857',
+      titulo: 'Superar la objeción de precio',
+      accion: 'Te enseñamos técnicas de presentación de valor y te damos acceso a packs de entrada pensados para mercados más sensibles al precio.',
+    },
+    marca: {
+      icon: '🌟', bg: '#F3F0FF', border: '#8B5CF6', labelColor: '#5B21B6',
+      titulo: 'Posicionar la marca en tu entorno',
+      accion: 'Recibís un plan de visibilidad local con contenido listo para compartir en redes y estrategias para generar confianza antes de la primera venta.',
+    },
+    expectativas_negocio: {
+      icon: '📋', bg: '#F0FFF8', border: '#16BE7D', labelColor: '#047857',
+      titulo: 'Arrancar con información real',
+      accion: 'Te compartimos una hoja de ruta honesta del negocio Just con tiempos, esfuerzo y resultados reales de consultoras con un perfil similar al tuyo.',
+    },
+  };
+
+
   function buildDiagnosis() {
     // Leer respuestas
     const razPrincipal = (getSelected('s3-list')[0]) || null;
@@ -1806,6 +1971,15 @@ acuerdo</span></label>
       </div>`;
 
     document.getElementById('diag-content').innerHTML = html;
+  }
+
+  function enableLikertBtn(btnId, groups) {
+    // Habilita el botón solo cuando cada grupo tiene al menos 1 radio checked
+    const allAnswered = groups.every(names =>
+      names.some(name => document.querySelector(`input[name="${name}"]:checked`))
+    );
+    const btn = document.getElementById(btnId);
+    if (btn) { if (allAnswered) btn.removeAttribute('disabled'); else btn.setAttribute('disabled',''); }
   }
 </script>
 </body>
